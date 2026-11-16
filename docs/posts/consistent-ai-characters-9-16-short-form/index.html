@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets &amp; Motion Transfer) · Omong Studio</title>
+<meta name="description" content="A practical pipeline for keeping one AI character recognisable across a 9:16 episode series: three-view character sheets, locked descriptors, first-frame anchoring, and motion transfer that does not melt the face.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/consistent-ai-characters-9-16-short-form/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets &amp; Motion Transfer) · Omong Studio">
+<meta property="og:description" content="A practical pipeline for keeping one AI character recognisable across a 9:16 episode series: three-view character sheets, locked descriptors, first-frame anchoring, and motion transfer that does not melt the face.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/consistent-ai-characters-9-16-short-form/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets &amp; Motion Transfer) · Omong Studio">
+<meta name="twitter:description" content="A practical pipeline for keeping one AI character recognisable across a 9:16 episode series: three-view character sheets, locked descriptors, first-frame anchoring, and motion transfer that does not melt the face.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+<meta property="article:published_time" content="2026-11-16">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets & Motion Transfer)", "description": "A practical pipeline for keeping one AI character recognisable across a 9:16 episode series: three-view character sheets, locked descriptors, first-frame anchoring, and motion transfer that does not melt the face.", "datePublished": "2026-11-16", "dateModified": "2026-11-16", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/consistent-ai-characters-9-16-short-form/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Character Consistency", "keywords": "AI character, 9:16, motion transfer, short-form series", "wordCount": 1246}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/character-consistency/">Character Consistency</a></nav>
+  <header class="post-head">
+    <h1>How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets &amp; Motion Transfer)</h1>
+    <p class="dek">The face starts drifting by episode three. A three-view character sheet, a frozen descriptor block, and one action per clip are what held a nine-episode vertical series together.</p>
+    <p class="meta"><time datetime="2026-11-16">November 16, 2026</time> · 6 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#why-faces-drift-in-the-first-place">Why faces drift in the first place</a><a href="#step-1-make-the-three-view-sheet-before-animating-anything">Step 1 — Make the three-view sheet before animating anything</a><a href="#step-2-freeze-the-descriptor-block">Step 2 — Freeze the descriptor block</a><a href="#step-3-one-action-per-clip-and-describe-the-camera-separately">Step 3 — One action per clip, and describe the camera separately</a><a href="#step-4-anchor-every-shot-to-an-approved-still">Step 4 — Anchor every shot to an approved still</a><a href="#step-5-compose-for-916-from-the-beginning">Step 5 — Compose for 9:16 from the beginning</a><a href="#step-6-reuse-the-sheet-instead-of-remaking-it">Step 6 — Reuse the sheet instead of remaking it</a><a href="#the-episode-loop">The episode loop</a><a href="#checklist-before-you-render-episode-one">Checklist before you render episode one</a></div></details>
+  <div class="prose">
+    <p class="lede">An episodic vertical series has one job before it has any other: the person has to be the same person. Not similar — the same. Viewers forgive a stiff arm or a background that repeats. They do not forgive a character whose nose changes width between episode two and episode three, because the moment that happens the series stops being a story and becomes a slideshow of strangers.</p>
+<p>This is the workflow that kept one character stable across a nine-episode run, the parts that broke, and the order I now do them in so they stop breaking.</p>
+<h2 id="why-faces-drift-in-the-first-place">Why faces drift in the first place</h2>
+<p>Every generation is a fresh roll of the dice. A text prompt describes a <em>type</em> — "woman, late twenties, dark hair, soft features" — and the model fills the type with a new face each time. The prompt has no memory, so the only thing holding identity together is whatever you attach to it.</p>
+<p>Three things make that worse in short-form:</p>
+<ul><li><strong>The crop.</strong> A 9:16 frame slices off shoulders and body language, which are half of what makes a person recognisable on screen.</li><li><strong>Motion interpolation.</strong> Image-to-video models generate plausible in-between frames. "Plausible" pulls toward the average face, so the longer the clip, the more your character becomes everybody.</li><li><strong>Prompt edits.</strong> Every word you change between shots is a small instruction to re-draw the face. People tighten a motion prompt and quietly rewrite the character.</li></ul>
+<p>Fix those three and most of the drift goes away.</p>
+<h2 id="step-1-make-the-three-view-sheet-before-animating-anything">Step 1 — Make the three-view sheet before animating anything</h2>
+<p>A character sheet is three or four stills of the same person from different angles, generated once and then treated as a contract. Make it at 1:1 or 2:3, never at 9:16 — the vertical crop cuts the shoulders and the model loses the body cues it needs.</p>
+<p>Start with one hero frame: full face, even light, neutral expression, no strong makeup, no shadows across the eyes. Then use that frame as a reference image to produce:</p>
+<ol><li><strong>Front view</strong>, eyes to camera.</li><li><strong>Three-quarter view</strong>, turned about 45 degrees.</li><li><strong>Profile</strong>, so the nose bridge and jaw line are on record.</li><li><strong>Two detail crops</strong>: eyes and brow, then hairline and neck. These settle arguments later.</li></ol>
+<p>Label the sheet and keep a palette strip beside it — three or four exact colours for skin, hair, wardrobe and background. When a shot comes back with a face that is right but a jacket that is two shades off, the palette strip tells you whether to fix the shot or accept it.</p>
+<h2 id="step-2-freeze-the-descriptor-block">Step 2 — Freeze the descriptor block</h2>
+<p>The sheet is the picture. The descriptor block is the sentence that travels with every prompt. Write it once, save it as a text file next to the sheet, and paste it unchanged into every shot:</p>
+<pre><code>CHARACTER: MIRA (locked — do not edit)
+AGE RANGE: late 20s
+FACE: round-oval, soft jaw, straight brows, wide-set eyes
+HAIR: dark brown, blunt shoulder-length cut, side part left
+SKIN: warm mid tone, matte, no freckles
+WARDROBE: charcoal overshirt, cream tee, thin silver chain
+LIGHT: soft window light from camera left, low contrast</code></pre>
+<p>Two rules keep this block useful. First, it never changes mid-season — not for a better adjective, not for a mood. Mood goes in the shot description, not in the character. Second, it says what is <em>absent</em> as well as what is present. "No freckles, no beard shadow, no earrings" is worth as much as any positive detail, because models add texture when they are unsure.</p>
+<p>If you storyboard for clients or collaborators, <a href="https://gamma.app/" rel="nofollow sponsored noopener" class="inline-tool">Gamma</a> will turn the shot list and the sheet into a deck you can show without opening a slide app, which matters more than it sounds when someone else has to approve a look.</p>
+<h2 id="step-3-one-action-per-clip-and-describe-the-camera-separately">Step 3 — One action per clip, and describe the camera separately</h2>
+<p>Motion transfer fails when the prompt asks for two things at once. "She turns, smiles, and walks toward the window" is three actions in five seconds, and the model resolves the conflict by generating a new person halfway through.</p>
+<p>Write motion prompts in three blocks and keep them short:</p>
+<ul><li><strong>Subject:</strong> the descriptor block, trimmed to face and wardrobe.</li><li><strong>Action:</strong> one verb. <em>Lifts the cup. Turns her head. Steps back.</em></li><li><strong>Camera:</strong> separate sentence. <em>Slow push in. Static. Slight handheld drift.</em></li></ul>
+<p>Four to six seconds per clip is the sweet spot for vertical. Longer clips drift more, and you rarely need more than six seconds for one beat in a short.</p>
+<h2 id="step-4-anchor-every-shot-to-an-approved-still">Step 4 — Anchor every shot to an approved still</h2>
+<p>Generate the first frame first, as an image. Approve it. Then animate from that frame. If the still is wrong, regenerate the still — not the video clip. Re-rolling video to fix a face is how a project burns a day.</p>
+<div class="table-wrap"><table><thead><tr><th>Stage</th><th>What you produce</th><th>What must be locked</th><th>How it usually fails</th></tr></thead><tbody><tr><td>Sheet</td><td>3 views + 2 detail crops</td><td>Face, hair length, wardrobe</td><td>Views generated in different lighting</td></tr><tr><td>Descriptor</td><td>One text block</td><td>Never edited mid-season</td><td>"Improving" wording between shots</td></tr><tr><td>Keyframe</td><td>One approved still per shot</td><td>Composition, eyeline, costume</td><td>Approving a still that needs a fix later</td></tr><tr><td>Motion</td><td>4–6 s clip per still</td><td>One action, separate camera note</td><td>Two verbs in one prompt</td></tr><tr><td>Assembly</td><td>Cut, captions, sound</td><td>Safe areas, subtitle band</td><td>Face pushed under platform UI</td></tr></tbody></table></div>
+<h2 id="step-5-compose-for-916-from-the-beginning">Step 5 — Compose for 9:16 from the beginning</h2>
+<p>A vertical frame is unforgiving. Keep the face in the upper third, leave the bottom fifth for captions and the platform's own interface, and resist the urge to fill the frame with the character. The tighter the crop, the less the model has to anchor identity to, and the more the viewer notices drift.</p>
+<p>Generate at full vertical resolution rather than cropping a landscape image. A centre-cropped landscape frame loses the shoulders, crops the hands at the wrist, and leaves you with a face floating in a slot.</p>
+<h2 id="step-6-reuse-the-sheet-instead-of-remaking-it">Step 6 — Reuse the sheet instead of remaking it</h2>
+<p>Keep one folder per character:</p>
+<pre><code>mira/
+  sheet_v01.png
+  descriptor.txt
+  palette.png
+  episode_01/  episode_02/  ...</code></pre>
+<p>When episode four needs a new angle, generate it <em>from</em> the sheet, approve it, and add it to the folder as <code>sheet_v02.png</code> with a note on what changed. Do not regenerate the whole sheet because one shot came out odd. A sheet that is regenerated every episode is not a contract, it is a new character each time — and that is exactly the drift you were trying to prevent.</p>
+<h2 id="the-episode-loop">The episode loop</h2>
+<p>The order that finally stopped costing me reshoots:</p>
+<ol><li>Eight to twelve beats, written as sentences.</li><li>A shot list of twelve to eighteen shots, each mapped to one beat.</li><li>One approved still per shot — batch them, but approve before animating.</li><li>Four to six second clips, one action each.</li><li>Assembly with captions, then a pass at full size on a phone screen, not a monitor.</li></ol>
+<p>If the stills are approved, the clips almost always behave. If a clip misbehaves, the fault is usually in the still or in a motion prompt that grew a second verb.</p>
+<h2 id="checklist-before-you-render-episode-one">Checklist before you render episode one</h2>
+<ul class="checklist"><li class="todo">Three-view sheet exists at 1:1 or 2:3, labelled, with a palette strip</li><li class="todo">Descriptor block saved as a file, pasted unedited into every prompt</li><li class="todo">Two detail crops approved (eyes, hairline)</li><li class="todo">Motion prompt template split into subject / action / camera</li><li class="todo">Every shot has an approved first frame before video generation</li><li class="todo">Face sits in the upper third; bottom fifth clear for captions</li><li class="todo">Character folder holds sheet, descriptor, palette and episode subfolders</li></ul>
+<p>One more thing worth writing down: the sheet is also the cheapest piece of marketing you will make. When a character holds together across nine episodes, the same sheet drives thumbnail variants and ad creatives without a new shoot — which is why a folder of approved angles is worth more than another prompt revision.</p>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://gamma.app/" rel="nofollow sponsored noopener">Gamma</a><span>Turns a shot list or a client brief into a presentable deck without opening a slide app. Useful when the storyboard has to be shown to someone else.</span></li><li><a href="https://www.adcreative.ai/" rel="nofollow sponsored noopener">AdCreative.ai</a><span>Batch creative variants when a single hook needs ten thumbnails instead of one. Good for testing, not for the hero frame.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/cinematic-ai-music-video-pipeline/">Building a Cinematic AI Music Video Pipeline in 2026: Audio, Visuals &amp; Voiceover Timing</a><span>Music Video · 6 min</span></li><li><a href="/omong-studio-journal/posts/single-file-offline-html-apps/">Shipping Solo-Creator Micro-Tools Fast: Why Single-File Offline HTML Apps Win</a><span>Micro-Tools · 4 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#why-faces-drift-in-the-first-place">Why faces drift in the first place</a></li><li class="lvl2"><a href="#step-1-make-the-three-view-sheet-before-animating-anything">Step 1 — Make the three-view sheet before animating anything</a></li><li class="lvl2"><a href="#step-2-freeze-the-descriptor-block">Step 2 — Freeze the descriptor block</a></li><li class="lvl2"><a href="#step-3-one-action-per-clip-and-describe-the-camera-separately">Step 3 — One action per clip, and describe the camera separately</a></li><li class="lvl2"><a href="#step-4-anchor-every-shot-to-an-approved-still">Step 4 — Anchor every shot to an approved still</a></li><li class="lvl2"><a href="#step-5-compose-for-916-from-the-beginning">Step 5 — Compose for 9:16 from the beginning</a></li><li class="lvl2"><a href="#step-6-reuse-the-sheet-instead-of-remaking-it">Step 6 — Reuse the sheet instead of remaking it</a></li><li class="lvl2"><a href="#the-episode-loop">The episode loop</a></li><li class="lvl2"><a href="#checklist-before-you-render-episode-one">Checklist before you render episode one</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://gamma.app/" rel="nofollow sponsored noopener">Gamma</a><span>Turns a shot list or a client brief into a presentable deck without opening a slide app. Useful when the storyboard has to be shown to someone else.</span></li><li><a href="https://www.adcreative.ai/" rel="nofollow sponsored noopener">AdCreative.ai</a><span>Batch creative variants when a single hook needs ten thumbnails instead of one. Good for testing, not for the hero frame.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No trackers, no cookies, no newsletter pop-up.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/rss.xml">RSS</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>

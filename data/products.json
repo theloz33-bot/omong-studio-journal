@@ -1,0 +1,35 @@
+{
+  "note": "Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.",
+  "products": [
+    {
+      "key": "prompt-vault",
+      "name": "Cinematic AI MV & Suno v6 Prompt Vault",
+      "short": "Prompt Vault",
+      "url": "https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault",
+      "price": "$19",
+      "badge": "Best for music videos",
+      "blurb": "60+ prompts for cinematic music-video shots, organised by shot type and section of a song.",
+      "features": ["Shot libraries by camera move", "Suno section-tagging prompts", "Voiceover timing sheet"]
+    },
+    {
+      "key": "character-kit",
+      "name": "AI Short-Form Character & Motion Transfer Kit",
+      "short": "Character Kit",
+      "url": "https://lozzy36.gumroad.com/l/ai-shortform-character-kit",
+      "price": "$17",
+      "badge": "Best for 9:16 series",
+      "blurb": "30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.",
+      "features": ["3-view sheet prompts", "Motion-transfer pipeline", "Episode storyboard sheet"]
+    },
+    {
+      "key": "vibe-coding",
+      "name": "Vibe Coding Launch Kit",
+      "short": "Vibe Coding Kit",
+      "url": "https://lozzy36.gumroad.com/l/vibe-coding-launch-kit",
+      "price": "$15",
+      "badge": "Best for micro-tools",
+      "blurb": "5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.",
+      "features": ["5 offline HTML templates", "30 build prompts", "Packaging and listing copy"]
+    }
+  ]
+}

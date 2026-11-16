@@ -1,0 +1,19 @@
+{
+  "brand": "Omong Studio",
+  "tagline": "Field notes on AI short-form, music videos and tiny tools",
+  "description": "A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.",
+  "about_blurb": "Omong Studio is one creator and a small stack of AI tools. This journal is where the workflows get written down: what actually held a character together across nine episodes, which stage of a music video pipeline breaks first, and why a 90 KB HTML file beats a server nobody asked for. No case-study theatre, no inflated numbers — just the process, with the parts that failed still in it.",
+  "base_url": "https://theloz33-bot.github.io/omong-studio-journal",
+  "base_path": "/omong-studio-journal/",
+  "language": "en",
+  "footer_note": "Written and published by Omong Studio. No trackers, no cookies, no newsletter pop-up.",
+  "nav": [
+    {"key": "journal", "label": "Journal", "path": ""},
+    {"key": "about", "label": "About", "path": "about/"},
+    {"key": "disclosure", "label": "Disclosure", "path": "disclosure/"}
+  ],
+  "pages": [
+    {"key": "about", "path": "/about/"},
+    {"key": "disclosure", "path": "/disclosure/"}
+  ]
+}

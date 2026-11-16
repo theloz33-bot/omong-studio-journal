@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="{{brand}}">
+<meta property="og:type" content="{{og_type}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="{{base}}assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{{brand}}" href="{{base}}rss.xml">
+<link rel="stylesheet" href="{{base}}assets/style.css">
+{{head_extra}}
+</head>
+<body class="{{body_class}}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{base}}" aria-label="{{brand}} — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>{{brand}}</span><em>{{tagline}}</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      {{nav}}
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+{{content}}
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">{{brand}}</p>
+    <p>{{footer_note}}</p>
+    <p class="footer-links"><a href="{{base}}rss.xml">RSS</a> · <a href="{{base}}about/">About</a> · <a href="{{base}}disclosure/">Disclosure</a> · <span>&copy; {{year}} {{brand}}</span></p>
+  </div>
+</footer>
+</body>
+</html>

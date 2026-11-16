@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Omong Studio</title>
+  <link>https://theloz33-bot.github.io/omong-studio-journal/</link>
+  <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
+  <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
+  <language>en</language>
+  <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Building a Cinematic AI Music Video Pipeline in 2026: Audio, Visuals &amp; Voiceover Timing</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/cinematic-ai-music-video-pipeline/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/cinematic-ai-music-video-pipeline/</guid>
+    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Music Video</category>
+    <description>Most AI music videos are cut to a storyboard that has nothing to do with the song. Start from the timecode map instead, and every other stage gets shorter.</description>
+  </item>
+  <item>
+    <title>How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets &amp; Motion Transfer)</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/consistent-ai-characters-9-16-short-form/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/consistent-ai-characters-9-16-short-form/</guid>
+    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Character Consistency</category>
+    <description>The face starts drifting by episode three. A three-view character sheet, a frozen descriptor block, and one action per clip are what held a nine-episode vertical series together.</description>
+  </item>
+  <item>
+    <title>Shipping Solo-Creator Micro-Tools Fast: Why Single-File Offline HTML Apps Win</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/single-file-offline-html-apps/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/single-file-offline-html-apps/</guid>
+    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Micro-Tools</category>
+    <description>One HTML file, no build step, no server, no login. For a solo creator selling small tools, that constraint is not a limitation — it is the whole product advantage.</description>
+  </item>
+</channel>
+</rss>
