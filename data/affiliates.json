@@ -6,7 +6,7 @@
     "elevenlabs": {
       "name": "ElevenLabs",
       "url": "https://elevenlabs.io/",
-      "affiliate_url": null,
+      "affiliate_url": "https://try.elevenlabs.io/j3vxlnhpi2d3",
       "blurb": "Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against."
     },
     "gamma": {
