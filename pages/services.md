@@ -74,7 +74,7 @@ What the pilot includes: script or shot list for approval, generated stills appr
 
 ## Rights, revisions and the limits
 
-- **Usage.** Commercial use by the brand that commissioned the work is included. Resale, resubscription of the same film to another brand, or redistribution as stock is not.
+- **Usage.** Commercial use by the brand that commissioned the work is included. Reselling the film, licensing the same cut to another brand, or redistributing it as stock is not.
 - **Revisions.** One round is included in the pilot. Larger projects get the number of rounds written into the quote, with free minor fixes (typos, caption position, timing nudges) separated from rebuilds (new concept, new music, redesigned character).
 - **Music.** Your song stays yours. If the studio writes the track, the licence is written into the quote before work starts.
 - **Real people.** No synthetic likeness of a real person without written consent, and no invented testimonial, review or performance claim placed inside the creative. If a script asks for a claim the product cannot support, it comes back as a question.
