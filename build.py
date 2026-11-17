@@ -405,6 +405,37 @@ def product_cards(products: dict, site: dict, heading: str = "Kits from the stud
 </section>"""
 
 
+def hire_strip(site: dict, variant: str = "post") -> str:
+    """Commission CTA. variant="post" sits under an article, "home" above the index."""
+    base = site["base_path"]
+    if variant == "home":
+        eyebrow = "Commission the studio"
+        title = "Long-form films, 9:16 ad cuts and original brand songs"
+        body = (
+            "AI storytelling for a 3–12 minute YouTube or brand film, vertical ads for "
+            "Reels, TikTok and Shorts, or a custom track with 15 and 30 second cutdowns. "
+            "Pilots from $95, delivered in 2–3 business days."
+        )
+        label = "Scope, price and process"
+    else:
+        eyebrow = "Work with the studio"
+        title = "Want this made for your brand instead of by you?"
+        body = (
+            "Omong Studio takes commissions for long-form storytelling, 9:16 short-form ads "
+            "and original brand songs. Pilots from $95, 2–3 business days, and a fixed quote "
+            "in writing before any work starts."
+        )
+        label = "See what a commission includes"
+    return f"""<section class="hire-strip hire-{variant}">
+  <div class="hire-copy">
+    <p class="hire-eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+    <p>{body}</p>
+  </div>
+  <a class="hire-cta" href="{base}services/">{label} &rarr;</a>
+</section>"""
+
+
 def sidebar_html(products: dict, site: dict, affiliates: dict, tools: list[str], toc: list[dict]) -> str:
     parts = []
     if toc:
@@ -551,6 +582,7 @@ def build() -> int:
   </div>
   {toolbox}
   {product_cards(products, site)}
+  {hire_strip(site)}
   {related_html}
   <p class="post-foot"><a href="{base}">All posts</a></p>
 </article>"""
@@ -690,6 +722,7 @@ def build() -> int:
     )
     index_content = f"""
 {hero}
+{hire_strip(site, 'home')}
 <section class="intro">
   <h2 class="rule">What this journal is</h2>
   <p>{escape(site['about_blurb'])}</p>
@@ -699,7 +732,8 @@ def build() -> int:
   <h2 class="rule">More notes</h2>
   <ul class="entries">{listing}</ul>
 </section>
-{product_cards(products, site, "Kits and prompt packs")}"""
+{product_cards(products, site, "Kits and prompt packs")}
+{hire_strip(site)}"""
 
     blog_ld = {
         "@context": "https://schema.org",

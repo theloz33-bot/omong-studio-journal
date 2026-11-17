@@ -26,3 +26,5 @@ Posts are added as projects finish, not on a content calendar. There is an [RSS 
 ## Elsewhere
 
 The studio's prompt packs and templates are on [Gumroad](https://lozzy36.gumroad.com/). They are the same working material written up here, packaged so you can skip the trial and error.
+
+If you would rather the studio made the video than read about making it, the [commission page](https://theloz33-bot.github.io/omong-studio-journal/services/) lists the three things it takes on — long-form storytelling, 9:16 short-form ads and original brand songs — with the pilot price, the turnaround and the delivery specs.

@@ -195,8 +195,7 @@ ul.tools span { display: block; color: var(--ink-soft); font-size: .86rem; margi
 .kit-go { font-size: .78rem; color: #e9a97f; }
 
 /* related */
-.related { margin-top: 2.5rem; }
-.related ul { list-style: none; padding: 0; margin: 0; }
+.related { margin-top: 2.5rem; }.related ul { list-style: none; padding: 0; margin: 0; }
 .related li { border-bottom: 1px solid var(--line); padding: .9rem 0; display: flex; flex-direction: column; gap: .2rem; }
 .related a { text-decoration: none; color: var(--ink); font-family: var(--serif); font-size: 1.05rem; }
 .related a:hover { color: var(--accent); }
@@ -260,4 +259,36 @@ ul.mini-kits em { font-style: normal; color: var(--ink-soft); font-size: .8rem; 
 /* on wide screens the sidebar carries the table of contents; the in-article one is for small screens only */
 @media (min-width: 62rem) {
   details.jump { display: none; }
+}
+
+/* ---------- commission strip ---------- */
+.hire-strip {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.75rem; flex-wrap: wrap;
+  background: var(--kit); color: #f3ede2;
+  padding: 1.6rem 1.7rem; border-radius: 3px;
+  margin: 2.5rem 0 0;
+}
+.hire-home { margin: 2.5rem 0 1rem; }
+.hire-copy { max-width: 40rem; }
+.hire-eyebrow {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .14em;
+  color: #e9a97f; font-weight: 700; margin: 0 0 .45rem;
+}
+.hire-strip h2 {
+  font-family: var(--serif); font-size: 1.32rem; line-height: 1.25;
+  letter-spacing: -.01em; margin: 0 0 .5rem; color: #fff;
+}
+.hire-strip p { margin: 0; font-size: .9rem; color: #cfc5b6; }
+.hire-cta {
+  flex: none; display: inline-block;
+  background: #f6f0e6; color: var(--kit);
+  padding: .65rem 1.05rem; border-radius: 2px;
+  font-size: .86rem; font-weight: 700; text-decoration: none;
+}
+.hire-cta:hover { background: var(--accent); color: #fff; }
+
+@media (max-width: 40rem) {
+  .hire-strip { padding: 1.35rem 1.3rem; }
+  .hire-cta { width: 100%; text-align: center; }
 }

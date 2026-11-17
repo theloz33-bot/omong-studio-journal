@@ -9,10 +9,12 @@
   "footer_note": "Written and published by Omong Studio. No trackers, no cookies, no newsletter pop-up.",
   "nav": [
     {"key": "journal", "label": "Journal", "path": ""},
+    {"key": "services", "label": "Hire", "path": "services/"},
     {"key": "about", "label": "About", "path": "about/"},
     {"key": "disclosure", "label": "Disclosure", "path": "disclosure/"}
   ],
   "pages": [
+    {"key": "services", "path": "/services/"},
     {"key": "about", "path": "/about/"},
     {"key": "disclosure", "path": "/disclosure/"}
   ]

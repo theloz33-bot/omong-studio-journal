@@ -17,6 +17,10 @@ When an affiliate link is not yet available for a tool, the site links to the to
 
 Prompt packs, templates and other studio products are sold through Gumroad. The checkout, the payment, the receipt and the refund policy all belong to Gumroad; this site never sees or stores a card number. Any question about an order goes to Gumroad support with the order receipt.
 
+## Commissions
+
+Video work commissioned from the studio is scoped and quoted in writing before anything starts, and the quote says what is delivered, when, and how many revision rounds are included. Any payment for commissioned work is handled between the client and the studio under the terms of that quote; this site takes no payment and stores no billing details. The three kinds of work and the pilot price are on the [commission page](https://theloz33-bot.github.io/omong-studio-journal/services/).
+
 ## What this site collects
 
 Nothing.
