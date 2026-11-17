@@ -6,16 +6,55 @@
   "base_url": "https://theloz33-bot.github.io/omong-studio-journal",
   "base_path": "/omong-studio-journal/",
   "language": "en",
-  "footer_note": "Written and published by Omong Studio. No trackers, no cookies, no newsletter pop-up.",
+  "footer_note": "Written and published by Omong Studio. No comment section, no newsletter pop-up — advertising and cookies are explained in the privacy policy.",
   "nav": [
-    {"key": "journal", "label": "Journal", "path": ""},
-    {"key": "services", "label": "Hire", "path": "services/"},
-    {"key": "about", "label": "About", "path": "about/"},
-    {"key": "disclosure", "label": "Disclosure", "path": "disclosure/"}
+    {
+      "key": "journal",
+      "label": "Journal",
+      "path": ""
+    },
+    {
+      "key": "services",
+      "label": "Hire",
+      "path": "services/"
+    },
+    {
+      "key": "about",
+      "label": "About",
+      "path": "about/"
+    },
+    {
+      "key": "disclosure",
+      "label": "Disclosure",
+      "path": "disclosure/"
+    },
+    {
+      "key": "contact",
+      "label": "Contact",
+      "path": "contact/"
+    }
   ],
   "pages": [
-    {"key": "services", "path": "/services/"},
-    {"key": "about", "path": "/about/"},
-    {"key": "disclosure", "path": "/disclosure/"}
-  ]
+    {
+      "key": "services",
+      "path": "/services/"
+    },
+    {
+      "key": "about",
+      "path": "/about/"
+    },
+    {
+      "key": "disclosure",
+      "path": "/disclosure/"
+    },
+    {
+      "key": "privacy",
+      "path": "/privacy/"
+    },
+    {
+      "key": "contact",
+      "path": "/contact/"
+    }
+  ],
+  "adsense_client": ""
 }

@@ -23,10 +23,10 @@ Video work commissioned from the studio is scoped and quoted in writing before a
 
 ## What this site collects
 
-Nothing.
+No name, email address or phone number, and no first-party analytics.
 
-- No analytics script, no tracking pixel, no session recording.
-- No cookies, and no cookie banner, because there is nothing to consent to.
+- No first-party analytics script, tracking pixel or session recording.
+- The site sets no cookies of its own. Advertising served by Google AdSense can, however, use cookies set by Google and other third-party vendors (including the DoubleClick cookie) to show ads based on prior visits. The cookie detail and the opt-out routes are in the [privacy policy](../privacy/).
 - No newsletter form, no comment system, no login.
 - No third-party fonts or embeds; the page loads only its own CSS and icon.
 
@@ -36,4 +36,4 @@ If you write to the studio through a link on this site, the message goes to whic
 
 ## Corrections
 
-If something published here is wrong — a workflow step that no longer works, a tool that changed its terms, a broken link — it gets corrected rather than quietly removed. The fastest route is a note through the [Gumroad shop page](https://lozzy36.gumroad.com/), naming the page and what is wrong.
+If something published here is wrong — a workflow step that no longer works, a tool that changed its terms, a broken link — it gets corrected rather than quietly removed. The fastest route is the [contact page](../contact/), naming the page and what is wrong.

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thirty Vertical Videos a Month From One Spreadsheet: a Batch Pipeline That Survives Week Three · Omong Studio</title>
+<meta name="description" content="A batch production system for vertical video: the spreadsheet schema that acts as the source of truth, the folder contract, a weekly rhythm that batches by stage instead of by video, and the four failure modes that appear around week three.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/batch-vertical-video-pipeline/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thirty Vertical Videos a Month From One Spreadsheet: a Batch Pipeline That Survives Week Three · Omong Studio">
+<meta property="og:description" content="A batch production system for vertical video: the spreadsheet schema that acts as the source of truth, the folder contract, a weekly rhythm that batches by stage instead of by video, and the four failure modes that appear around week three.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/batch-vertical-video-pipeline/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Thirty Vertical Videos a Month From One Spreadsheet: a Batch Pipeline That Survives Week Three · Omong Studio">
+<meta name="twitter:description" content="A batch production system for vertical video: the spreadsheet schema that acts as the source of truth, the folder contract, a weekly rhythm that batches by stage instead of by video, and the four failure modes that appear around week three.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+
+<meta property="article:published_time" content="2026-11-18">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Thirty Vertical Videos a Month From One Spreadsheet: a Batch Pipeline That Survives Week Three", "description": "A batch production system for vertical video: the spreadsheet schema that acts as the source of truth, the folder contract, a weekly rhythm that batches by stage instead of by video, and the four failure modes that appear around week three.", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/batch-vertical-video-pipeline/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Automation", "keywords": "batch production, pipeline, spreadsheet, AI video, workflow", "wordCount": 1184}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/services/">Hire</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+<a href="/omong-studio-journal/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/automation/">Automation</a></nav>
+  <header class="post-head">
+    <h1>Thirty Vertical Videos a Month From One Spreadsheet: a Batch Pipeline That Survives Week Three</h1>
+    <p class="dek">Daily uploads do not fail on day one. They fail on day nineteen, when the script, the voice file and the shot folder stop matching. One spreadsheet column fixes that.</p>
+    <p class="meta"><time datetime="2026-11-18">November 18, 2026</time> · 5 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#one-row-per-video-one-sheet-per-month">One row per video, one sheet per month</a><a href="#the-folder-contract">The folder contract</a><a href="#batch-by-stage-not-by-video">Batch by stage, not by video</a><a href="#automate-the-plumbing-not-the-edit">Automate the plumbing, not the edit</a><a href="#the-four-failures-that-show-up-around-week-three">The four failures that show up around week three</a><a href="#the-monthly-review-that-keeps-it-alive">The monthly review that keeps it alive</a><a href="#before-the-first-batch">Before the first batch</a></div></details>
+  <div class="prose">
+    <p class="lede">Anyone can produce three vertical videos in a burst. Thirty a month is a different problem: the work arrives faster than the decisions that make it consistent, and the thing that breaks is never the renderer. It is the file name.</p>
+<p>Three weeks in, the script in the document says one hook, the voice file says another, the shot folder is numbered differently from both, and nobody can tell which caption file belongs to which cut. That is not a discipline failure. It is the predictable result of keeping the source of truth in four places at once.</p>
+<h2 id="one-row-per-video-one-sheet-per-month">One row per video, one sheet per month</h2>
+<p>The system that holds up is unglamorous: a spreadsheet where one row is one video and every downstream file is addressed from that row. Not a content calendar, not a Kanban board with twenty cards — a table with a fixed column contract.</p>
+<div class="table-wrap"><table><thead><tr><th>Column</th><th>Holds</th><th>Contract</th></tr></thead><tbody><tr><td><code>id</code></td><td><code>2026-11-18-a</code></td><td>Never changes after creation; every file name starts with it</td></tr><tr><td><code>slug</code></td><td><code>hook-frame-test</code></td><td>Readable, lowercase, no spaces</td></tr><tr><td><code>hook</code></td><td>The first spoken line</td><td>Six words or fewer</td></tr><tr><td><code>promise</code></td><td>What the viewer gets</td><td>One sentence, written before the script</td></tr><tr><td><code>script</code></td><td>Link to the script file</td><td>Lives in the row's folder, not in the sheet</td></tr><tr><td><code>vo</code></td><td><code>done</code> or blank</td><td>Only flips when the WAV is exported and measured</td></tr><tr><td><code>shots</code></td><td>Count of approved clips</td><td>A number, not "in progress"</td></tr><tr><td><code>captions</code></td><td><code>auto</code> / <code>fixed</code> / blank</td><td>Blank means not checked by a human</td></tr><tr><td><code>status</code></td><td><code>script</code> → <code>vo</code> → <code>shots</code> → <code>assembly</code> → <code>qa</code> → <code>published</code></td><td>Exactly one value, never two</td></tr><tr><td><code>blocked</code></td><td>One short reason, or blank</td><td>Anything in this column is not being worked on</td></tr><tr><td><code>keep</code></td><td><code>keep</code> / <code>cut</code> / <code>redo</code></td><td>Written after publishing, before the next batch</td></tr></tbody></table></div>
+<p>The <code>blocked</code> column is the one people skip, and it is the one that keeps a batch honest. A row that is stuck for four days has a name for why: missing voice speed, a prompt that produces melted hands, a client note pending. A row with no reason and no progress is an invisible cost, and there are usually six of them by week three.</p>
+<h2 id="the-folder-contract">The folder contract</h2>
+<p>Every row gets a folder named from <code>id</code> and <code>slug</code>, with the same four subfolders in the same order:</p>
+<pre><code>2026-11-18-a_hook-frame-test/
+  01_script.md        final script, dated in the file header
+  02_vo/              master.wav, plus per-line exports if the workflow needs them
+  03_shots/           approved clips only, named s001, s002, …
+  04_edit/            project file, caption .srt, export</code></pre>
+<p>Two rules make this survive contact with reality. Rejected clips live in <code>03_shots/_rejected/</code> rather than being deleted, because the fourth-best take is often the one that gets used after a re-script. And nothing is renamed once it is exported — a version change becomes <code>_v2</code>, not a new name.</p>
+<p>The point of the contract is that any question about any video is answerable with one path. That is what has to be true at video twenty-six, when the reference video from week one is the only record of how the hook was phrased.</p>
+<h2 id="batch-by-stage-not-by-video">Batch by stage, not by video</h2>
+<p>The instinct is to finish one video, then the next. That switches the brain between writing, listening, prompting and cutting every 40 minutes, and each switch has a warm-up cost that lands on a different kind of decision each time.</p>
+<p>Batching by stage keeps one mode of attention for a whole block:</p>
+<div class="table-wrap"><table><thead><tr><th>Day</th><th>Stage</th><th>What happens</th><th>Typical block</th></tr></thead><tbody><tr><td>Monday</td><td>Script</td><td>Write seven scripts against the month's promise list; no rendering</td><td>3 h</td></tr><tr><td>Tuesday</td><td>Voice</td><td>Generate and measure every WAV for the week; lock speed and voice</td><td>2 h</td></tr><tr><td>Wednesday</td><td>Shots</td><td>Prompt, review and approve clips for three videos</td><td>4 h</td></tr><tr><td>Thursday</td><td>Assembly</td><td>Cut three videos back to back with the same caption and export settings</td><td>4 h</td></tr><tr><td>Friday</td><td>QA and publish</td><td>Watch finished cuts, fix captions, schedule</td><td>2 h</td></tr></tbody></table></div>
+<p>The gain is not speed on any single step. It is that every video in a batch gets the same voice, the same caption preset and the same loudness target, because those decisions are made once per block instead of once per video. A month produced this way sounds like one channel; a month produced one video at a time sounds like four nervous weeks.</p>
+<h2 id="automate-the-plumbing-not-the-edit">Automate the plumbing, not the edit</h2>
+<p>The steps worth scripting are the ones with no judgement in them: creating the folder tree from a row, renaming the exported voice files to the id, splitting a script into caption lines at the punctuation, generating a contact sheet of approved clips, and writing the status back to the sheet. Each of those takes an afternoon once and saves minutes on every video, which is the only arithmetic that matters at thirty a month.</p>
+<p>The steps not worth automating are caption timing, hook wording and the choice of which take is good. Every attempt to automate those produces output that needs to be reviewed more carefully than it would have taken to do, and the review is the expensive part.</p>
+<h2 id="the-four-failures-that-show-up-around-week-three">The four failures that show up around week three</h2>
+<ol><li><strong>Drift across the batch.</strong> The character's jaw or wardrobe changes between video 12 and video 18 because the descriptor block was edited in one script. Fix: the descriptor lives in one file, copied into each script by the folder script, never retyped.</li><li><strong>Loudness creep.</strong> Each voice export is normalised to its own peak, so episode 20 is 3 dB louder than episode 2. Fix: one target per destination, measured on the export, logged in a column next to <code>vo</code>.</li><li><strong>Caption overflow.</strong> A four-word line becomes six after a re-script, and now runs into the platform's UI. Fix: a caption length check in QA, before scheduling, not after publishing.</li><li><strong>Stale status.</strong> A row says <code>shots</code> while the cut is already published, so the next batch re-uses the slot. Fix: status is written by the person who did the work, in the same minute, not at the end of the week.</li></ol>
+<p>Every one of them is a data problem, and every one of them is caught by a single column that is actually maintained.</p>
+<h2 id="the-monthly-review-that-keeps-it-alive">The monthly review that keeps it alive</h2>
+<p>Once a month, before writing the next batch, read the <code>keep</code> column. Three questions, in order: which hooks held past two seconds, which format took under an hour to assemble, and which rows were blocked most often.</p>
+<p>Rows that took more than two hours of attention and did not hold get cut from the format list, not improved. Rows that held and assembled fast get three variations in the next batch. That is the whole planning process — there is no separate strategy document, because the sheet already holds the evidence.</p>
+<p>A batch pipeline is not a way to make more videos for the same effort. It is a way to make the same video thirty times without the quality drifting, which is what a series actually is.</p>
+<h2 id="before-the-first-batch">Before the first batch</h2>
+<ul class="checklist"><li class="todo">One row per video, with <code>id</code>, <code>slug</code>, <code>hook</code>, <code>promise</code> filled before any work starts</li><li class="todo">Folder tree generated from the row, not typed by hand</li><li class="todo">Descriptor block in one file, included by every script</li><li class="todo">One loudness target per destination, measured on the export</li><li class="todo"><code>status</code> written in the same minute the stage finishes</li><li class="todo"><code>blocked</code> used every single time something waits</li><li class="todo">Monthly review reads the <code>keep</code> column before planning</li></ul>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://www.browse.ai/" rel="nofollow sponsored noopener">Browse AI</a><span>Watches a page and returns structured rows without a scraper. Handy for tracking release dates, stock or listing changes while you work.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for spoken-word audio</span>
+  <span class="kit-name">Podcast & Faceless YouTube Audio Production Kit</span>
+  <span class="kit-desc">A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.</span>
+  <span class="kit-foot"><span class="kit-price">$12</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="hire-strip hire-post">
+  <div class="hire-copy">
+    <p class="hire-eyebrow">Work with the studio</p>
+    <h2>Want this made for your brand instead of by you?</h2>
+    <p>Omong Studio takes commissions for long-form storytelling, 9:16 short-form ads and original brand songs. Pilots from $95, 2–3 business days, and a fixed quote in writing before any work starts.</p>
+  </div>
+  <a class="hire-cta" href="/omong-studio-journal/services/">See what a commission includes &rarr;</a>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/9-16-short-form-retention-editing/">Editing 9:16 Shorts for Retention: the Hook Frame, Caption Rhythm and the Loop Point</a><span>Short-Form Production · 6 min</span></li><li><a href="/omong-studio-journal/posts/ai-talking-head-lip-sync/">AI Talking Heads That Don't Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes</a><span>Short-Form Production · 5 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#one-row-per-video-one-sheet-per-month">One row per video, one sheet per month</a></li><li class="lvl2"><a href="#the-folder-contract">The folder contract</a></li><li class="lvl2"><a href="#batch-by-stage-not-by-video">Batch by stage, not by video</a></li><li class="lvl2"><a href="#automate-the-plumbing-not-the-edit">Automate the plumbing, not the edit</a></li><li class="lvl2"><a href="#the-four-failures-that-show-up-around-week-three">The four failures that show up around week three</a></li><li class="lvl2"><a href="#the-monthly-review-that-keeps-it-alive">The monthly review that keeps it alive</a></li><li class="lvl2"><a href="#before-the-first-batch">Before the first batch</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://www.browse.ai/" rel="nofollow sponsored noopener">Browse AI</a><span>Watches a page and returns structured rows without a scraper. Handy for tracking release dates, stock or listing changes while you work.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored"><strong>Podcast & Faceless YouTube Audio Production Kit</strong><em>$12</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No comment section, no newsletter pop-up — advertising and cookies are explained in the privacy policy.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/services/">Hire the studio</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <a href="/omong-studio-journal/privacy/">Privacy</a> · <a href="/omong-studio-journal/contact/">Contact</a> · <a href="/omong-studio-journal/rss.xml">RSS</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>

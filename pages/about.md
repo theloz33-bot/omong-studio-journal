@@ -23,6 +23,8 @@ Three rules apply to everything published here:
 
 Posts are added as projects finish, not on a content calendar. There is an [RSS feed](https://theloz33-bot.github.io/omong-studio-journal/rss.xml) if you would rather read it that way.
 
+The journal is a static site with no accounts and no comment section. Advertising and cookie handling, including how to opt out of personalised ads, are set out in the [privacy policy](../privacy/); affiliate links are explained on the [disclosure page](../disclosure/).
+
 ## Elsewhere
 
 The studio's prompt packs and templates are on [Gumroad](https://lozzy36.gumroad.com/). They are the same working material written up here, packaged so you can skip the trial and error.

@@ -490,6 +490,18 @@ def build() -> int:
     brand = site["brand"]
     year = datetime.now().year
 
+    # AdSense slot: the script is emitted only once data/site.json carries a publisher ID.
+    client = (site.get("adsense_client") or "").strip()
+    if client:
+        if not re.fullmatch(r"ca-pub-\d{16}", client):
+            raise SystemExit(f"adsense_client is malformed: {client!r} (expected ca-pub-XXXXXXXXXXXXXXXX)")
+        adsense = (
+            f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={client}" '
+            'crossorigin="anonymous"></script>'
+        )
+    else:
+        adsense = ""
+
     def page(
         *,
         title: str,
@@ -516,6 +528,7 @@ def build() -> int:
                 "content": content,
                 "year": year,
                 "footer_note": site["footer_note"],
+                "adsense": adsense,
                 "head_extra": head_extra,
                 "body_class": body_class,
             },
@@ -835,6 +848,7 @@ def build() -> int:
 
     # ---- report
     print(f"built {len(posts)} posts, {len(categories)} categories -> {OUT}")
+    print(f"  AdSense slot: {'on (' + client + ')' if client else 'empty — no script emitted'}")
     problems = []
     for post in posts:
         flag = ""

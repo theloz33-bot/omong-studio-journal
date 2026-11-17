@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Talking Heads That Don&#x27;t Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes · Omong Studio</title>
+<meta name="description" content="A working method for AI talking-head shorts: generate voice at final speed, cut at phrase boundaries, keep clips under eight seconds, and read three specific failure modes — drift, plosive jaw, dead eyes — from a quarter-speed review.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/ai-talking-head-lip-sync/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Talking Heads That Don&#x27;t Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes · Omong Studio">
+<meta property="og:description" content="A working method for AI talking-head shorts: generate voice at final speed, cut at phrase boundaries, keep clips under eight seconds, and read three specific failure modes — drift, plosive jaw, dead eyes — from a quarter-speed review.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/ai-talking-head-lip-sync/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Talking Heads That Don&#x27;t Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes · Omong Studio">
+<meta name="twitter:description" content="A working method for AI talking-head shorts: generate voice at final speed, cut at phrase boundaries, keep clips under eight seconds, and read three specific failure modes — drift, plosive jaw, dead eyes — from a quarter-speed review.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+
+<meta property="article:published_time" content="2026-11-18">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI Talking Heads That Don't Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes", "description": "A working method for AI talking-head shorts: generate voice at final speed, cut at phrase boundaries, keep clips under eight seconds, and read three specific failure modes — drift, plosive jaw, dead eyes — from a quarter-speed review.", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/ai-talking-head-lip-sync/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Short-Form Production", "keywords": "lip-sync, talking head, TTS, AI avatar, short-form", "wordCount": 1129}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/services/">Hire</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+<a href="/omong-studio-journal/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/short-form-production/">Short-Form Production</a></nav>
+  <header class="post-head">
+    <h1>AI Talking Heads That Don't Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes</h1>
+    <p class="dek">Lip-sync does not fail all at once. It drifts four frames over eight seconds, or the jaw walks through the teeth on the first plosive. Both are fixable before the render.</p>
+    <p class="meta"><time datetime="2026-11-18">November 18, 2026</time> · 5 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#generate-the-voice-first-at-the-speed-it-will-be-published">Generate the voice first, at the speed it will be published</a><a href="#cut-at-phrase-boundaries-align-on-the-plosive">Cut at phrase boundaries, align on the plosive</a><a href="#the-three-failure-modes">The three failure modes</a><a href="#framing-and-settings-that-hold-up">Framing and settings that hold up</a><a href="#the-quarter-speed-review">The quarter-speed review</a><a href="#before-publishing-a-talking-head-short">Before publishing a talking-head short</a></div></details>
+  <div class="prose">
+    <p class="lede">A talking-head clip is judged by a viewer who cannot name what is wrong. They see a face speaking and something in the mouth region reads as false, so they scroll. Nobody comments "the jaw intersected the upper lip on the bilabial"; they just leave.</p>
+<p>That makes lip-sync a QA problem more than a generation problem. The tools are good enough that a clean clip is achievable most of the time; the work is recognising at quarter speed which clips are not clean, and knowing which parameter caused it. Three failures account for nearly every clip that has to be thrown away.</p>
+<h2 id="generate-the-voice-first-at-the-speed-it-will-be-published">Generate the voice first, at the speed it will be published</h2>
+<p>Every lip-sync problem starts one step before the render. If the voice is generated at 100% and then sped up 8% to fit a 30-second cut, the mouth was animated against a rhythm that no longer exists, and the result drifts. Speed changes belong before the video model sees the audio, never after.</p>
+<p>What the audio has to be before it can be lip-synced:</p>
+<ul><li><strong>Final speed and pitch.</strong> No time-stretch afterwards. If the read is too long, cut words, not milliseconds.</li><li><strong>Silence trimmed at both ends</strong>, with 80–120 ms of room at the head so the first consonant is not clipped.</li><li><strong>One consistent pace</strong>, roughly 150–165 words per minute for a vertical short. Faster reads look better in 9:16 but give the model less to work with per phoneme.</li><li><strong>No overlapping music bed in the render input.</strong> Sync against the dry voice and mix the bed in the edit; a bed inside the render makes the mouth chase a composite signal.</li><li><strong>De-essed.</strong> Sibilance that survives into the render tends to produce a small, repeating jaw flutter on every "s".</li></ul>
+<p>Then export per phrase, not per script. A phrase of three to eight seconds is the unit that works: long enough that the model has context, short enough that drift cannot accumulate.</p>
+<h2 id="cut-at-phrase-boundaries-align-on-the-plosive">Cut at phrase boundaries, align on the plosive</h2>
+<p>The assembly order matters more than any single setting:</p>
+<ol><li>Generate voice as one file, then split at punctuation into phrase WAVs. Keep the splits on commas and full stops, never mid-word.</li><li>Render one clip per phrase. Do not render a 40-second monologue and hope.</li><li>In the edit, align each clip on its first plosive — the frame where the "p", "b" or "t" closes — and let the phrase run out.</li><li>Overlap clips by two frames at the joins and hide the seam under a cut or a small reframe. Hard joins between phrases are where the jaw resets visibly.</li><li>Add the music bed and captions after all clips are aligned, so a later fix does not move the sync.</li></ol>
+<p>The eight-second ceiling is not arbitrary. Drift is cumulative and roughly proportional to clip length: a clip that starts perfectly aligned can be four frames late by second eight, which is exactly where the eye starts to notice on a phone. Splitting a 24-second monologue into four phrases and joining them costs ten minutes and removes the entire class of problem.</p>
+<h2 id="the-three-failure-modes">The three failure modes</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>What it looks like</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>Drift</td><td>Mouth closes 2–5 frames after the audio on later words</td><td>Clip too long, or speed changed after render</td><td>Re-render per phrase under 8 s, no time-stretch</td></tr><tr><td>Plosive jaw</td><td>Jaw passes through the upper teeth or lip on "m", "b", "p"</td><td>Head too small in frame, or too much head motion for the model</td><td>Enlarge the face to 45%+ of frame height, reduce motion amplitude</td></tr><tr><td>Dead eyes</td><td>Mouth moves correctly but the face reads as a mask</td><td>Single-frame source, no blink, flat lighting</td><td>Use a short video source or add blink and micro-motion; keep lighting consistent across clips</td></tr><tr><td>Hairline melt</td><td>Edges of hair blur and shift on fast turns</td><td>Motion exceeds what the model can carry at that resolution</td><td>Cut the turn, hold the frame, or reframe wider</td></tr><tr><td>Lip flap on silence</td><td>Mouth keeps moving in pauses</td><td>Voice file has room tone the model treats as speech</td><td>Gate silence in the WAV before render, or split phrases tighter</td></tr></tbody></table></div>
+<p>Two of these are framing decisions rather than model settings, which is why they recur: a talking head that fills 30% of a vertical frame simply does not carry enough pixels on the mouth to survive generation, and no prompt fixes that.</p>
+<h2 id="framing-and-settings-that-hold-up">Framing and settings that hold up</h2>
+<ul><li><strong>Face height 45–55% of the frame.</strong> Chest-up in 1080×1920. Bigger than a mid-shot, smaller than a close-up, so the mouth is 90–110 px tall after encoding.</li><li><strong>Three-quarter angle, not straight-on.</strong> A 15–25° turn hides the jaw seam and reads as more natural on a phone.</li><li><strong>Camera locked.</strong> Any push-in during a speaking clip fights the model's own motion.</li><li><strong>One lighting setup per series.</strong> Matching colour temperature and key direction across clips is what makes a series feel like one recording; a face relit between clips reads as a different person even when the model is identical.</li><li><strong>Source length.</strong> A two-to-four second source video of the subject blinking and settling produces better results than a single still, because the model has real motion to interpolate.</li></ul>
+<h2 id="the-quarter-speed-review">The quarter-speed review</h2>
+<p>Watch every finished clip at 0.25× before it goes anywhere else. At that speed the failures separate cleanly: drift shows as the mouth finishing after the sound, the plosive fault shows as a single bad frame at a bilabial, and the dead-eye clip shows as a face that never changes between blinks.</p>
+<p>Then watch at full speed with sound off, because that is how a large share of the audience sees it. A clip that passes quarter speed but reads as a puppet with the sound off has a motion problem, not a sync problem — usually too much head movement per phrase.</p>
+<p>Keep the review sheet next to the batch: clip id, phrase text, pass or fail, and the reason in three words. By the tenth video the pattern is obvious, and it is almost never the model version.</p>
+<h2 id="before-publishing-a-talking-head-short">Before publishing a talking-head short</h2>
+<ul class="checklist"><li class="todo">Voice generated at final speed; no time-stretch in the edit</li><li class="todo">Each clip under 8 seconds, split on punctuation</li><li class="todo">Face 45%+ of frame height, three-quarter angle, camera locked</li><li class="todo">First plosive of each phrase aligned, joins hidden under cuts</li><li class="todo">Music bed and captions added after alignment</li><li class="todo">Quarter-speed review passed on all clips</li><li class="todo">Watched with sound off, once, from start to finish</li></ul>
+<p>A viewer forgives an imperfect voice far more readily than an imperfect mouth, because the mouth is the thing they are looking at. Treat alignment as the deliverable and the rest of the clip gets easier.</p>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li><li><a href="https://www.adcreative.ai/" rel="nofollow sponsored noopener">AdCreative.ai</a><span>Batch creative variants when a single hook needs ten thumbnails instead of one. Good for testing, not for the hero frame.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for spoken-word audio</span>
+  <span class="kit-name">Podcast & Faceless YouTube Audio Production Kit</span>
+  <span class="kit-desc">A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.</span>
+  <span class="kit-foot"><span class="kit-price">$12</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="hire-strip hire-post">
+  <div class="hire-copy">
+    <p class="hire-eyebrow">Work with the studio</p>
+    <h2>Want this made for your brand instead of by you?</h2>
+    <p>Omong Studio takes commissions for long-form storytelling, 9:16 short-form ads and original brand songs. Pilots from $95, 2–3 business days, and a fixed quote in writing before any work starts.</p>
+  </div>
+  <a class="hire-cta" href="/omong-studio-journal/services/">See what a commission includes &rarr;</a>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/9-16-short-form-retention-editing/">Editing 9:16 Shorts for Retention: the Hook Frame, Caption Rhythm and the Loop Point</a><span>Short-Form Production · 6 min</span></li><li><a href="/omong-studio-journal/posts/batch-vertical-video-pipeline/">Thirty Vertical Videos a Month From One Spreadsheet: a Batch Pipeline That Survives Week Three</a><span>Automation · 5 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#generate-the-voice-first-at-the-speed-it-will-be-published">Generate the voice first, at the speed it will be published</a></li><li class="lvl2"><a href="#cut-at-phrase-boundaries-align-on-the-plosive">Cut at phrase boundaries, align on the plosive</a></li><li class="lvl2"><a href="#the-three-failure-modes">The three failure modes</a></li><li class="lvl2"><a href="#framing-and-settings-that-hold-up">Framing and settings that hold up</a></li><li class="lvl2"><a href="#the-quarter-speed-review">The quarter-speed review</a></li><li class="lvl2"><a href="#before-publishing-a-talking-head-short">Before publishing a talking-head short</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li><li><a href="https://www.adcreative.ai/" rel="nofollow sponsored noopener">AdCreative.ai</a><span>Batch creative variants when a single hook needs ten thumbnails instead of one. Good for testing, not for the hero frame.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored"><strong>Podcast & Faceless YouTube Audio Production Kit</strong><em>$12</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No comment section, no newsletter pop-up — advertising and cookies are explained in the privacy policy.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/services/">Hire the studio</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <a href="/omong-studio-journal/privacy/">Privacy</a> · <a href="/omong-studio-journal/contact/">Contact</a> · <a href="/omong-studio-journal/rss.xml">RSS</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -89,6 +89,11 @@ def resolve(href: str, page: Path, base_path: str) -> Path | None:
             return target
 
     if not path.startswith(base_path):
+        # Another site on the same domain (the studio hub, the Korean journal) lives in
+        # its own repository, so those links are external to this one.
+        if path in ("", "/") or path.startswith(("/about/", "/privacy/", "/contact/",
+                                                "/disclosure/", "/omong-kr-lab/")):
+            return None
         return Path("/outside-site-base")  # fails existence check on purpose
     rel = path[len(base_path):]
     target = (DOCS / rel).resolve()
@@ -158,6 +163,18 @@ def main() -> int:
             failures.append(f"{post.parent.name}: Gumroad cards missing")
         if "sponsored" not in text:
             failures.append(f"{post.parent.name}: no sponsored/affiliate markup")
+
+    # Advertising makes any "no cookies" claim false; the privacy policy is the only place
+    # that describes what actually happens.
+    for pattern in (r"\bno cookies\b(?! of its own)", r"\bno cookie\b(?! of its own)",
+                    r"does not use cookies", r"never sets? (?:a )?cookies?"):
+        for page in pages:
+            if re.search(pattern, page.read_text(encoding="utf-8"), re.I):
+                failures.append(f"{page.relative_to(DOCS)}: cookie claim contradicts advertising")
+
+    for required in ("privacy/index.html", "contact/index.html"):
+        if not (DOCS / required).exists():
+            failures.append(f"missing required page: {required}")
 
     if failures:
         print("AUDIT FAILED")
