@@ -10,10 +10,12 @@ Live: https://theloz33-bot.github.io/omong-studio-journal/
 - `data/site.json` — brand, base URL, navigation, page list.
 - `data/affiliates.json` — every AI-tool link in one place. When an affiliate link is issued, paste it into `affiliate_url` and rebuild: in-text links, toolboxes and the sidebar all follow.
 - `data/products.json` — the Gumroad cards.
-- `pages/*.md` — About and Disclosure.
+- `pages/*.md` — Hire (the commission page at `/services/`), About and Disclosure.
 - `templates/base.html` — the page shell.
 - `static/` — CSS and favicon, copied to `docs/assets/`.
 - `build.py` — no dependencies, Python 3 standard library only. Writes `docs/`.
+
+The commission page (`pages/services.md` → `/services/`) is the studio's hire desk: long-form storytelling, 9:16 short-form ads, custom brand songs, the $95 pilot, delivery specs and the limits. `build.py` injects a CTA strip that links to it on the home page (top and bottom) and at the foot of every post, so new articles carry the offer without any per-post markup. The "Hire" nav item and footer link also point there. Prices on that page are the studio's published terms — change them in `pages/services.md`, and if a package price on Krymong changes, change it in both places.
 
 `docs/` is what GitHub Pages serves (`main` branch, `/ (root)` folder is **not** used — the source is `docs/`). `docs/.nojekyll` stops Jekyll from touching the output.
 
