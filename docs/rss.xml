@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Mastering Audio for Faceless YouTube and AI Podcasts: LUFS Targets, Chain Order and a Per-Line Voiceover Workflow</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/faceless-podcast-audio-mastering-lufs/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/faceless-podcast-audio-mastering-lufs/</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Audio</category>
+    <description>A faceless channel is an audio product with pictures attached. Four numbers keep forty episodes at the same level, and one chain order keeps the voice sounding like the same show.</description>
+  </item>
   <item>
     <title>Building a Cinematic AI Music Video Pipeline in 2026: Audio, Visuals &amp; Voiceover Timing</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/cinematic-ai-music-video-pipeline/</link>

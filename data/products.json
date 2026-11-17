@@ -22,6 +22,16 @@
       "features": ["3-view sheet prompts", "Motion-transfer pipeline", "Episode storyboard sheet"]
     },
     {
+      "key": "podcast-audio-kit",
+      "name": "Podcast & Faceless YouTube Audio Production Kit",
+      "short": "Audio Kit",
+      "url": "https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit",
+      "price": "$12",
+      "badge": "Best for spoken-word audio",
+      "blurb": "A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.",
+      "features": ["LUFS planner + episode log", "40 BGM, SFX and VO prompts", "13-chapter mastering playbook"]
+    },
+    {
       "key": "vibe-coding",
       "name": "Vibe Coding Launch Kit",
       "short": "Vibe Coding Kit",

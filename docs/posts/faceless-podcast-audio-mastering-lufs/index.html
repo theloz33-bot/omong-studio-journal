@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mastering Audio for Faceless YouTube and AI Podcasts: LUFS Targets, Chain Order and a Per-Line Voiceover Workflow · Omong Studio</title>
+<meta name="description" content="Speech-audio workflow for faceless YouTube and AI podcasts: platform LUFS targets, the seven-stage voice chain, bed ducking levels, and per-line voiceover timing.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/faceless-podcast-audio-mastering-lufs/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mastering Audio for Faceless YouTube and AI Podcasts: LUFS Targets, Chain Order and a Per-Line Voiceover Workflow · Omong Studio">
+<meta property="og:description" content="Speech-audio workflow for faceless YouTube and AI podcasts: platform LUFS targets, the seven-stage voice chain, bed ducking levels, and per-line voiceover timing.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/faceless-podcast-audio-mastering-lufs/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mastering Audio for Faceless YouTube and AI Podcasts: LUFS Targets, Chain Order and a Per-Line Voiceover Workflow · Omong Studio">
+<meta name="twitter:description" content="Speech-audio workflow for faceless YouTube and AI podcasts: platform LUFS targets, the seven-stage voice chain, bed ducking levels, and per-line voiceover timing.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+<meta property="article:published_time" content="2026-11-17">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mastering Audio for Faceless YouTube and AI Podcasts: LUFS Targets, Chain Order and a Per-Line Voiceover Workflow", "description": "Speech-audio workflow for faceless YouTube and AI podcasts: platform LUFS targets, the seven-stage voice chain, bed ducking levels, and per-line voiceover timing.", "datePublished": "2026-11-17", "dateModified": "2026-11-17", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/faceless-podcast-audio-mastering-lufs/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Audio", "keywords": "audio mastering, LUFS, faceless YouTube, podcast, voiceover", "wordCount": 1295}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/audio/">Audio</a></nav>
+  <header class="post-head">
+    <h1>Mastering Audio for Faceless YouTube and AI Podcasts: LUFS Targets, Chain Order and a Per-Line Voiceover Workflow</h1>
+    <p class="dek">A faceless channel is an audio product with pictures attached. Four numbers keep forty episodes at the same level, and one chain order keeps the voice sounding like the same show.</p>
+    <p class="meta"><time datetime="2026-11-17">November 17, 2026</time> · 6 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#speech-mastering-is-four-numbers-not-a-tone">Speech mastering is four numbers, not a tone</a><a href="#the-targets-by-destination">The targets, by destination</a><a href="#measure-the-export-not-the-session">Measure the export, not the session</a><a href="#the-voice-chain-in-seven-stages">The voice chain, in seven stages</a><a href="#everything-else-is-placed-against-the-voice">Everything else is placed against the voice</a><a href="#voiceover-generate-per-line-time-it-after-the-picture">Voiceover: generate per line, time it after the picture</a><a href="#normalise-with-one-gain-change-then-limit">Normalise with one gain change, then limit</a><a href="#the-episode-log-is-what-keeps-a-series-level">The episode log is what keeps a series level</a><a href="#checklist-before-an-export-leaves-the-machine">Checklist before an export leaves the machine</a><a href="#what-the-order-actually-buys">What the order actually buys</a></div></details>
+  <div class="prose">
+    <p class="lede">A faceless channel can survive ordinary footage. It cannot survive an episode 4 dB quieter than the last one: nobody writes a comment, they just reach for the volume knob, and the show stops feeling like a show.</p>
+<p>Speech mastering is narrower than music mastering, and more measurable: every word understood on a phone speaker, at the same level as last week, with nothing touched. That is four numbers.</p>
+<h2 id="speech-mastering-is-four-numbers-not-a-tone">Speech mastering is four numbers, not a tone</h2>
+<div class="table-wrap"><table><thead><tr><th>What</th><th>Measured as</th><th>Why it is the goal</th></tr></thead><tbody><tr><td>Level</td><td>Integrated LUFS across the whole episode</td><td>Sits where every other show the listener hears sits</td></tr><tr><td>Headroom</td><td>True peak in dBTP, not sample peak</td><td>Nothing clips after the platform re-encodes</td></tr><tr><td>Clarity</td><td>Voice 4–8 dB above the bed, 1–4 kHz intact</td><td>Words survive a phone speaker</td></tr><tr><td>Consistency</td><td>Spread of LUFS across episodes under 1 LU</td><td>No volume knob between episodes</td></tr></tbody></table></div>
+<p>Tone matters, but tone is taste. These four are the difference between a channel and a folder of files.</p>
+<h2 id="the-targets-by-destination">The targets, by destination</h2>
+<div class="table-wrap"><table><thead><tr><th>Where it plays</th><th>Integrated</th><th>True peak</th><th>LRA</th></tr></thead><tbody><tr><td>YouTube, long and Shorts</td><td>−14 LUFS</td><td>−1.0 dBTP</td><td>7–9 LU</td></tr><tr><td>Podcast, stereo (Apple, Spotify)</td><td>−16 LUFS</td><td>−1.0 dBTP</td><td>6–8 LU</td></tr><tr><td>Podcast, mono</td><td>−19 LUFS</td><td>−1.0 dBTP</td><td>6–8 LU</td></tr><tr><td>TikTok, Reels, Shorts</td><td>−12 to −14 LUFS</td><td>−1.0 dBTP</td><td>5–7 LU</td></tr></tbody></table></div>
+<p>Platforms normalise to their own target, so what you deliver decides how far they turn you up or down. Pick one target per destination, log the measured value, and do not move it mid-season. Verify the documented target for your platform; these are common practice, not a guarantee.</p>
+<h2 id="measure-the-export-not-the-session">Measure the export, not the session</h2>
+<ul><li>Measure the whole file, not a ten-second section — integrated loudness is an average over time.</li><li>Measure after the limiter, on the exported master, not on the session bus.</li><li>Use true peak: inter-sample peaks pass a sample-peak meter and clip a lossy encoder.</li><li>Measure start, middle and end; if they disagree, take the median and look at why. Store the number beside the episode.</li></ul>
+<h2 id="the-voice-chain-in-seven-stages">The voice chain, in seven stages</h2>
+<p>Each stage exists for one problem; if it is not in this recording, skip the stage.</p>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Stage</th><th>Starting setting</th><th>What it fixes</th></tr></thead><tbody><tr><td>1</td><td>High-pass filter</td><td>80–100 Hz, 12 dB/oct</td><td>Rumble, handling noise, HVAC</td></tr><tr><td>2</td><td>Corrective EQ</td><td>−3 dB at 300–500 Hz, Q 1.0</td><td>Small-room boxiness</td></tr><tr><td>3</td><td>Presence EQ</td><td>+2 dB at 3–5 kHz, Q 0.8</td><td>Intelligibility on phone speakers</td></tr><tr><td>4</td><td>De-esser</td><td>5–8 kHz, −3 to −4 dB, wide Q</td><td>Sibilance, worst on whispers</td></tr><tr><td>5</td><td>Compressor</td><td>3:1, attack 10 ms, release 80 ms, 3–6 dB reduction</td><td>Level consistency and density</td></tr><tr><td>6</td><td>Saturation, optional</td><td>Very light, second harmonic</td><td>Presence a compressor cannot add</td></tr><tr><td>7</td><td>Limiter</td><td>Ceiling −1.0 dBTP, lookahead 5 ms</td><td>Peaks and final loudness</td></tr></tbody></table></div>
+<p>Order matters more than settings: corrective EQ before compression, so the compressor is not reacting to a resonance you are about to remove; de-esser before compression, because compression pulls the body up around the sibilance; limiter last, and if it works harder than 3–4 dB the level problem is earlier in the chain. Two gentle stages — 2:1 at 2 dB, then 3:1 at 3 dB — sound more natural than one 4:1 doing five, because neither pumps.</p>
+<h2 id="everything-else-is-placed-against-the-voice">Everything else is placed against the voice</h2>
+<p>Set the voice at the target first. Music, effects and room tone are then placed relative to it, never the other way round.</p>
+<div class="table-wrap"><table><thead><tr><th>Element</th><th>Level</th><th>Note</th></tr></thead><tbody><tr><td>Voice</td><td>The target, e.g. −16 LUFS</td><td>The reference everything else is set against</td></tr><tr><td>Bed under voice</td><td>−14 to −18 dB below voice</td><td>Around −30 to −34 LUFS in a −16 LUFS mix</td></tr><tr><td>Bed in gaps</td><td>+6 dB above its ducked level</td><td>Rises only when nobody is speaking</td></tr><tr><td>SFX accent</td><td>−10 to −14 dB below voice</td><td>Loud enough to feel, quiet enough not to mask</td></tr><tr><td>Room tone</td><td>−55 to −50 dBFS</td><td>Continuous, never digital silence</td></tr></tbody></table></div>
+<p>Four ducking settings worth keeping: sidechain the bed from the voice, not by hand-drawn automation; attack 100–150 ms so the first consonant is not clipped; release 300–500 ms; 4–6 dB of depth, because more and the listener hears the music move. Carve a 2–3 dB dip at 1–4 kHz in the bed itself, and fade out over 1.5 seconds, not 0.2.</p>
+<h2 id="voiceover-generate-per-line-time-it-after-the-picture">Voiceover: generate per line, time it after the picture</h2>
+<p>For a faceless video the narrator is the only performer, so consistency is a technical problem, not an acting one. A saved voice per show, generated and exported per line, solves most of it. <a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener" class="inline-tool">ElevenLabs</a> with one saved voice is the difference between a narrator who sounds the same in the outro as the intro and one who changes accent at the bridge.</p>
+<ol><li>Lock the script and mark where each line starts against the cut picture.</li><li>Generate one file per line, not one long take — separate files let you slide a line three frames without regenerating the rest.</li><li>Pace narration at 150–160 words per minute, slower for anything calm. If a read rushes, shorten the sentence; adjectives rarely fix pacing.</li><li>Fit the voice to the cut once there is more than one hook line, nudging the picture so the last word lands on a beat.</li><li>Leave the first two seconds clean — platforms fade in and clip a line starting at 0:00. Keep narration near −3 dBFS with music ducked 3–6 dB, and check on a phone speaker.</li></ol>
+<h2 id="normalise-with-one-gain-change-then-limit">Normalise with one gain change, then limit</h2>
+<p>Normalisation is a measurement plus a fixed gain, not compression and not limiting. If the result pumps, the pumping was created earlier.</p>
+<ol><li>Export a reference mix near −18 dBFS average, peaks below −6 dBFS.</li><li>Measure integrated LUFS over the whole file and write it down.</li><li>Apply the difference to the target as a single gain change.</li><li>Set the limiter ceiling to −1.0 dBTP; more than 3 dB of limiting sends you back to the compressor.</li><li>Measure again — the limiter moves integrated loudness by 0.3–1.0 LU — and keep two files: a −16 LUFS archive master and a −14 LUFS copy for a video-first upload.</li></ol>
+<h2 id="the-episode-log-is-what-keeps-a-series-level">The episode log is what keeps a series level</h2>
+<p>Consistency is a process: one line per export, four columns, and drift becomes visible before a viewer mentions it.</p>
+<div class="table-wrap"><table><thead><tr><th>Episode</th><th>LUFS</th><th>dBTP</th><th>Bed</th><th>Notes</th></tr></thead><tbody><tr><td>EP-041</td><td>−16.1</td><td>−1.2</td><td>lo-fi, 72 BPM</td><td>new mic position, +1 dB presence</td></tr></tbody></table></div>
+<p>A spread wider than 1 LU across a season is the most common reason a series feels amateur, and no listener can tell you why. Four things stay fixed while a season runs: microphone distance and interface gain, the chain preset, the bed library and its level, and the delivery target. Change them between seasons, not between episodes.</p>
+<h2 id="checklist-before-an-export-leaves-the-machine">Checklist before an export leaves the machine</h2>
+<ul class="checklist"><li class="todo">Voice at the target LUFS, measured on the exported file</li><li class="todo">True peak at or below −1.0 dBTP after the limiter</li><li class="todo">Bed 14–18 dB under the voice, sidechained, ducking 4–6 dB</li><li class="todo">Room tone under every gap; no digital silence between sentences</li><li class="todo">Measurement written into the episode log</li></ul>
+<h2 id="what-the-order-actually-buys">What the order actually buys</h2>
+<p>Not speed on any stage — the stages take the same time either way. It buys the second pass: an episode mixed against a measured target and a log gets one assembly and one fix, while one mixed by ear gets re-mastered later, when the previous episode suddenly sounds louder.</p>
+<p>The chain builder, the 40 bed, SFX and narrator prompts and the 13-chapter playbook behind these numbers are packaged as the <a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">Podcast &amp; Faceless YouTube Audio Production Kit</a> if you would rather not rebuild the sheet. Either way, keep the order: voice first at a measured level, chain in a fixed sequence, everything else placed under the voice, and a number in the log at the end.</p>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for spoken-word audio</span>
+  <span class="kit-name">Podcast & Faceless YouTube Audio Production Kit</span>
+  <span class="kit-desc">A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.</span>
+  <span class="kit-foot"><span class="kit-price">$12</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/cinematic-ai-music-video-pipeline/">Building a Cinematic AI Music Video Pipeline in 2026: Audio, Visuals &amp; Voiceover Timing</a><span>Music Video · 6 min</span></li><li><a href="/omong-studio-journal/posts/consistent-ai-characters-9-16-short-form/">How to Keep AI Characters Consistent Across 9:16 Short-Form Episodes (3-View Sheets &amp; Motion Transfer)</a><span>Character Consistency · 6 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#speech-mastering-is-four-numbers-not-a-tone">Speech mastering is four numbers, not a tone</a></li><li class="lvl2"><a href="#the-targets-by-destination">The targets, by destination</a></li><li class="lvl2"><a href="#measure-the-export-not-the-session">Measure the export, not the session</a></li><li class="lvl2"><a href="#the-voice-chain-in-seven-stages">The voice chain, in seven stages</a></li><li class="lvl2"><a href="#everything-else-is-placed-against-the-voice">Everything else is placed against the voice</a></li><li class="lvl2"><a href="#voiceover-generate-per-line-time-it-after-the-picture">Voiceover: generate per line, time it after the picture</a></li><li class="lvl2"><a href="#normalise-with-one-gain-change-then-limit">Normalise with one gain change, then limit</a></li><li class="lvl2"><a href="#the-episode-log-is-what-keeps-a-series-level">The episode log is what keeps a series level</a></li><li class="lvl2"><a href="#checklist-before-an-export-leaves-the-machine">Checklist before an export leaves the machine</a></li><li class="lvl2"><a href="#what-the-order-actually-buys">What the order actually buys</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored"><strong>Podcast & Faceless YouTube Audio Production Kit</strong><em>$12</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No trackers, no cookies, no newsletter pop-up.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/rss.xml">RSS</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>
