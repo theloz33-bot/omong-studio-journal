@@ -53,6 +53,18 @@ What the pilot includes: script or shot list for approval, generated stills appr
 4. **Motion and assembly.** One camera move and one action per clip, cut to the beat or to the voiceover line.
 5. **Delivery and one revision round.** You get the master, the caption file and a one-page note on what to change if you want to re-cut later.
 
+## Three cuts you can watch
+
+Instead of describing the work, here are three ads that are already public. The cards play in place on the [Omong Studio PR page](https://upload.83blue.com/s/omong/).
+
+| Work | Format | What it is | Where |
+| --- | --- | --- | --- |
+| NAMUHX — *Butterfly Observation Log: In Love* | 30 s · 1080×1920 vertical | Product ad for the SK Intelix wellness robot NAMUHX. Autonomous escort, fur-intake air care, a bonding-index scan and sleep care told as one 30-second story from a cat's point of view. Submitted to the 2026 NAMUHX AI short-form contest. | [Instagram Reel](https://www.instagram.com/reel/DfZEeDGvYnl/) |
+| *Nothing was wasted* — 30 s brand film | 30 s · 16:9 | Six Ludyte H3 shots joined with dissolves over an original track. Captions burned in, plus six separate narration tracks (Korean and English) delivered alongside a silent master. | [Plays on the PR page](https://upload.83blue.com/s/omong/) |
+| *Noran Chicken — 10th anniversary* | 15 s · 16:9 | A Ludyte H3 audio-lipsync pass: the mascot on stage singing the studio's own song. A fictional-brand sample made for the portfolio, not a client commission. | [Plays on the PR page](https://upload.83blue.com/s/omong/) |
+
+All three were made without a camera. Each was approved as stills before any motion was generated, so product shape and colour were settled while changes were still cheap — the same reason a brand logo is checked at the still stage rather than after assembly.
+
 ## What to send with the brief
 
 - [ ] The product or service in one sentence, and the one claim the video must land
