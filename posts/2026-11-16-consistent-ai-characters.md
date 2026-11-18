@@ -7,7 +7,7 @@ excerpt: "The face starts drifting by episode three. A three-view character shee
 description: "A practical pipeline for keeping one AI character recognisable across a 9:16 episode series: three-view character sheets, locked descriptors, first-frame anchoring, and motion transfer that does not melt the face."
 tags: ["AI character", "9:16", "motion transfer", "short-form series"]
 tools: ["gamma", "adcreative"]
-featured: true
+featured: false
 ---
 
 An episodic vertical series has one job before it has any other: the person has to be the same person. Not similar — the same. Viewers forgive a stiff arm or a background that repeats. They do not forgive a character whose nose changes width between episode two and episode three, because the moment that happens the series stops being a story and becomes a slideshow of strangers.
