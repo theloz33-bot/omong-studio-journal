@@ -32,6 +32,16 @@
       "features": ["LUFS planner + episode log", "40 BGM, SFX and VO prompts", "13-chapter mastering playbook"]
     },
     {
+      "key": "commercial-studio",
+      "name": "AI Product Commercial & 3D Asset Prompt Studio",
+      "short": "Commercial Studio",
+      "url": "https://lozzy36.gumroad.com/l/product-commercial-3d-studio",
+      "price": "$19",
+      "badge": "Best for product spots",
+      "blurb": "A 30-second shot-list builder and 35 lighting and PBR prompts for product commercials, so the footage and the bed arrive on the same beat.",
+      "features": ["15/30/45s shot-list builder", "35 lighting and PBR prompts", "15-chapter commercial playbook"]
+    },
+    {
       "key": "vibe-coding",
       "name": "Vibe Coding Launch Kit",
       "short": "Vibe Coding Kit",
