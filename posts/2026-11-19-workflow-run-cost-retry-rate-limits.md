@@ -58,7 +58,7 @@ n8n's retries carry a condition: they only run when the node's On Error stays at
 
 ## Retry only what is safe to run twice
 
-Some actions must not happen twice: charging a card, posting to a live account, emailing a customer. Keep those out of retry and put a check in front of them.
+Some actions must not happen twice: charging a card, posting to an account, emailing a customer. Keep those out of retry and put a check in front of them.
 
 - Reads, lookups, uploads to a named path and updates that set a value are safe to repeat.
 - Creates, sends and charges are not. Give them an idempotency key, or write an "already done" flag first and check it on the second attempt.
