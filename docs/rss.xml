@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/workflow-run-cost-retry-rate-limits/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/workflow-run-cost-retry-rate-limits/</guid>
+    <pubDate>Thu, 19 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Automation</category>
+    <description>Two workflows that do the same job can cost ten times different amounts, and both can fail at 3am without telling anyone. The billing unit each platform counts, the retry window it gives you, and the guardrails that make a run safe to leave on.</description>
+  </item>
   <item>
     <title>Editing 9:16 Shorts for Retention: the Hook Frame, Caption Rhythm and the Loop Point</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/9-16-short-form-retention-editing/</link>

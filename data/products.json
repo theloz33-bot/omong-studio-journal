@@ -42,6 +42,16 @@
       "features": ["15/30/45s shot-list builder", "35 lighting and PBR prompts", "15-chapter commercial playbook"]
     },
     {
+      "key": "automation-blueprints",
+      "name": "AI Automation Blueprint Pack",
+      "short": "Automation Pack",
+      "url": "https://lozzy36.gumroad.com/l/automation-blueprint-pack",
+      "price": "$19",
+      "badge": "Best for n8n, Make & Zapier",
+      "blurb": "32 buildable workflows with the guardrails, failure modes and run-cost math that say whether a workflow should exist at all.",
+      "features": ["32 workflow blueprints + JSON", "Run-cost and break-even calculator", "19-page build playbook"]
+    },
+    {
       "key": "vibe-coding",
       "name": "Vibe Coding Launch Kit",
       "short": "Vibe Coding Kit",

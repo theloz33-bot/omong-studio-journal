@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier · Omong Studio</title>
+<meta name="description" content="What n8n, Make and Zapier each count as a billable unit, the same 12-step workflow priced three ways, real retry limits and backoff schedules, and the guardrails to add before a workflow runs unattended.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/workflow-run-cost-retry-rate-limits/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier · Omong Studio">
+<meta property="og:description" content="What n8n, Make and Zapier each count as a billable unit, the same 12-step workflow priced three ways, real retry limits and backoff schedules, and the guardrails to add before a workflow runs unattended.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/workflow-run-cost-retry-rate-limits/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier · Omong Studio">
+<meta name="twitter:description" content="What n8n, Make and Zapier each count as a billable unit, the same 12-step workflow priced three ways, real retry limits and backoff schedules, and the guardrails to add before a workflow runs unattended.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+
+<meta property="article:published_time" content="2026-11-19">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier", "description": "What n8n, Make and Zapier each count as a billable unit, the same 12-step workflow priced three ways, real retry limits and backoff schedules, and the guardrails to add before a workflow runs unattended.", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/workflow-run-cost-retry-rate-limits/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Automation", "keywords": "n8n, Make, Zapier, automation cost, rate limits, error handling", "wordCount": 1300}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/services/">Hire</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+<a href="/omong-studio-journal/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/automation/">Automation</a></nav>
+  <header class="post-head">
+    <h1>What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier</h1>
+    <p class="dek">Two workflows that do the same job can cost ten times different amounts, and both can fail at 3am without telling anyone. The billing unit each platform counts, the retry window it gives you, and the guardrails that make a run safe to leave on.</p>
+    <p class="meta"><time datetime="2026-11-19">November 19, 2026</time> · 6 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#the-unit-is-not-the-same-unit">The unit is not the same unit</a><a href="#the-same-twelve-step-workflow-priced-three-ways">The same twelve-step workflow, priced three ways</a><a href="#what-the-retry-window-actually-buys">What the retry window actually buys</a><a href="#retry-only-what-is-safe-to-run-twice">Retry only what is safe to run twice</a><a href="#rate-limits-are-a-scheduling-problem">Rate limits are a scheduling problem</a><a href="#guardrails-that-make-a-workflow-safe-to-leave-on">Guardrails that make a workflow safe to leave on</a><a href="#deleting-a-workflow-is-a-cost-decision">Deleting a workflow is a cost decision</a><a href="#three-numbers-before-the-first-node">Three numbers before the first node</a></div></details>
+  <div class="prose">
+    <p class="lede">Automations are chosen by how fast they can be built and kept by two numbers nobody writes down: what a run costs, and what happens when it fails at 3am. Both are knowable before the first node is connected, and both are usually discovered later, on an invoice.</p>
+<p>The arithmetic below runs one twelve-step workflow through the three most-picked platforms. The point is not that one is cheaper: "cheap" means something different on each, and the difference decides the platform for you.</p>
+<h2 id="the-unit-is-not-the-same-unit">The unit is not the same unit</h2>
+<div class="table-wrap"><table><thead><tr><th>Platform</th><th>Billing unit</th><th>Counted</th><th>Not counted</th><th>Entry paid plan</th></tr></thead><tbody><tr><td>n8n</td><td>One execution: a single run of the whole workflow</td><td>Production runs started by a trigger or webhook</td><td>Steps inside the run</td><td>Starter, 2,500 executions, $24/mo monthly ($20 annual)</td></tr><tr><td>Make</td><td>One credit per module action</td><td>Reads, searches, writes, iterations, the trigger</td><td>Router and error-handler modules</td><td>Core, 10,000 credits, $16/mo monthly ($12 annual)</td></tr><tr><td>Zapier</td><td>One task per successful action step</td><td>Each completed action</td><td>Triggers, polling, failed actions, built-in tools such as Filter, Paths, Formatter, Delay</td><td>Professional, 750 tasks, $29.99/mo monthly ($19.99 annual)</td></tr></tbody></table></div>
+<p>Prices are each vendor's November 2026 figure, monthly billing, USD; all three have changed twice this year, so check before buying.</p>
+<p>The third column is where they stop being comparable. On n8n a twenty-node workflow and a two-node workflow cost the same per run. Elsewhere the bill is the sum of the steps, so "one big workflow or three small ones" becomes a billing question.</p>
+<h2 id="the-same-twelve-step-workflow-priced-three-ways">The same twelve-step workflow, priced three ways</h2>
+<p>A workflow that runs 1,000 times a month: trigger, filter, lookup, normalise, one AI call, create, update, upload, notify, log. Twelve modules, eleven of them actions after the trigger.</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>Units per run</th><th>Units per month</th><th>Plan needed</th><th>Monthly cost</th><th>Cost per run</th></tr></thead><tbody><tr><td>n8n</td><td>1 execution</td><td>1,000</td><td>Starter (2,500)</td><td>$24</td><td>$0.024</td></tr><tr><td>Make</td><td>12 credits</td><td>12,000</td><td>Core, 20,000 credits</td><td>$28</td><td>$0.028</td></tr><tr><td>Zapier</td><td>11 tasks</td><td>11,000</td><td>Professional, 20,000 tasks</td><td>$283.50</td><td>$0.28</td></tr></tbody></table></div>
+<p>The first two land within a few cents. The third is roughly ten times that, not because Zapier is priced badly but because 750 tasks cost $29.99 — four cents a task, eleven tasks a run.</p>
+<p><strong>Depth is cheap on n8n and billable elsewhere.</strong> Splitting one long workflow into five small ones costs five executions on n8n and nothing extra on Make or Zapier, because the modules are unchanged.</p>
+<p><strong>Fan-out flips the arithmetic.</strong> A run processing 300 rows is one execution on n8n and 300 module iterations on Make, where the cheap option becomes the expensive one. Price at the item count you expect.</p>
+<p>The table hides a cliff: on Make, 10,000 credits is $16 and 20,000 is $28, so 12,000 costs 75% more for 20% more volume. Add 30% headroom and price the tier above.</p>
+<h2 id="what-the-retry-window-actually-buys">What the retry window actually buys</h2>
+<div class="table-wrap"><table><thead><tr><th>Platform</th><th>Where it is set</th><th>Attempts</th><th>Total window</th></tr></thead><tbody><tr><td>n8n</td><td>Node settings, Retry On Fail</td><td>2 to 5 tries, default 3; wait 0 to 5,000 ms, default 1,000 ms</td><td>Seconds</td></tr><tr><td>Make</td><td>Error handler on the module</td><td>Retry handler: 3 attempts, 15 min apart by default; rate-limit, connection and timeout errors also back off 1 min, 10, 10, 30, 30, 30, then 3 h twice</td><td>Hours</td></tr><tr><td>Zapier</td><td>Autoreplay, account or per Zap</td><td>Up to 5 attempts at 5 min, 30 min, 1 h, 3 h, 6 h</td><td>About 10 h 35 min</td></tr></tbody></table></div>
+<p>The table answers the question every failure asks: hiccup or outage? n8n's retries cover a dropped request or a rate limit, not a vendor down for twenty minutes; that needs Loop Over Items with a Wait, or a scheduled re-check. Zapier's autoreplay suits the other case and is slow by design.</p>
+<p>n8n's retries carry a condition: they only run when the node's On Error stays at Stop Workflow. Set it to Continue or Continue (using error output) and the retry settings are ignored, so the item goes down the error branch on the first failure.</p>
+<h2 id="retry-only-what-is-safe-to-run-twice">Retry only what is safe to run twice</h2>
+<p>Some actions must not happen twice: charging a card, posting to a live account, emailing a customer. Keep those out of retry and put a check in front of them.</p>
+<ul><li>Reads, lookups, uploads to a named path and updates that set a value are safe to repeat.</li><li>Creates, sends and charges are not. Give them an idempotency key, or write an "already done" flag first and check it on the second attempt.</li><li>If a step can half-succeed, log before the call and after it so a retry can tell the difference.</li></ul>
+<p>Retries are priced differently. On n8n a retry stays inside the same execution; on Make the failing bundle reruns from the failing module, spending credits on each attempt, though error-handler modules are free; on Zapier failed actions are not counted at all. That settles the setting rather than the platform: stop giving five retries to a step failing for a reason retries will not fix.</p>
+<p>The most retry-prone call in a content pipeline is the narration step: <a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener" class="inline-tool">ElevenLabs</a> returns one file per line, so a timeout on line 14 of 40 can be re-fetched alone instead of regenerating forty.</p>
+<h2 id="rate-limits-are-a-scheduling-problem">Rate limits are a scheduling problem</h2>
+<p>A rate limit says the schedule is wrong; retrying faster cannot fix it. On n8n it literally cannot: Wait Between Tries is capped at 5,000 ms and the HTTP Request node ignores <code>Retry-After</code>, so the limit has to be handled in the design.</p>
+<ul><li><strong>Batch before you call.</strong> One request for twenty records beats twenty requests, everywhere.</li><li><strong>Space the batch.</strong> Loop Over Items with a Wait on n8n, an iterator with a sleep or a 15-minute schedule on Make, Delay or Looping on Zapier.</li><li><strong>Filter before you fetch.</strong> A trigger filter costs nothing and removes a whole call.</li><li><strong>Respect the concurrency ceiling.</strong> n8n Starter runs 5 executions at once and caps a run at 5 minutes; Pro raises those to 20 and 40.</li></ul>
+<h2 id="guardrails-that-make-a-workflow-safe-to-leave-on">Guardrails that make a workflow safe to leave on</h2>
+<ul class="checklist"><li class="todo">Anything irreversible is prepared, not completed: a draft, a proposal, a review queue, an internal note</li><li class="todo">One log row per run: timestamp, item count, duration, result</li><li class="todo">An item cap per run, which stops rather than truncating silently</li><li class="todo">A dry-run first week: read, log, skip the writes</li><li class="todo">Failures land in one inbox a human reads, not a vendor's history page</li><li class="todo">A pause flag checked at the first node, so the kill switch is one edit</li><li class="todo">A named owner and a review date</li></ul>
+<p>The cap and the log pay first. Without a cap, one bad query becomes 40,000 runs and a bill; without a log row, "it stopped working last Tuesday" is an anecdote, not a record.</p>
+<h2 id="deleting-a-workflow-is-a-cost-decision">Deleting a workflow is a cost decision</h2>
+<p>A run costing 3 cents and saving three minutes at $30 an hour returns about $1.50, a good trade if it runs on real items. If one run in twenty produces something usable, the cost per useful outcome is twenty times that.</p>
+<p>The workflows worth deleting are rarely the expensive ones. They fail quietly, get checked by a person every morning, and take fifteen minutes a week. One that saves twenty minutes and costs fifteen in supervision is a second job with a subscription.</p>
+<p>The 32 blueprints in the <a href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored">AI Automation Blueprint Pack</a> were built around this arithmetic: the trigger, the ordered steps, the guardrail, the common failure and a cost per run, plus a studio that calculates break-even volume.</p>
+<h2 id="three-numbers-before-the-first-node">Three numbers before the first node</h2>
+<p>Steps per run, runs per month, and what happens on failure. Write those three down and the choice mostly makes itself. Anything that must happen on time needs a retry window shorter than its deadline; the rest is preference, and preferences are fine as long as the invoice was expected.</p>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for spoken-word audio</span>
+  <span class="kit-name">Podcast & Faceless YouTube Audio Production Kit</span>
+  <span class="kit-desc">A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.</span>
+  <span class="kit-foot"><span class="kit-price">$12</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/product-commercial-3d-studio" rel="noopener sponsored">
+  <span class="kit-badge">Best for product spots</span>
+  <span class="kit-name">AI Product Commercial & 3D Asset Prompt Studio</span>
+  <span class="kit-desc">A 30-second shot-list builder and 35 lighting and PBR prompts for product commercials, so the footage and the bed arrive on the same beat.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored">
+  <span class="kit-badge">Best for n8n, Make & Zapier</span>
+  <span class="kit-name">AI Automation Blueprint Pack</span>
+  <span class="kit-desc">32 buildable workflows with the guardrails, failure modes and run-cost math that say whether a workflow should exist at all.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="hire-strip hire-post">
+  <div class="hire-copy">
+    <p class="hire-eyebrow">Work with the studio</p>
+    <h2>Want this made for your brand instead of by you?</h2>
+    <p>Omong Studio takes commissions for long-form storytelling, 9:16 short-form ads and original brand songs. Pilots from $95, 2–3 business days, and a fixed quote in writing before any work starts.</p>
+  </div>
+  <a class="hire-cta" href="/omong-studio-journal/services/">See what a commission includes &rarr;</a>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/9-16-short-form-retention-editing/">Editing 9:16 Shorts for Retention: the Hook Frame, Caption Rhythm and the Loop Point</a><span>Short-Form Production · 6 min</span></li><li><a href="/omong-studio-journal/posts/ai-talking-head-lip-sync/">AI Talking Heads That Don't Slip: Lip-Sync Timing, Jaw Artifacts and Three Failure Modes</a><span>Short-Form Production · 5 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#the-unit-is-not-the-same-unit">The unit is not the same unit</a></li><li class="lvl2"><a href="#the-same-twelve-step-workflow-priced-three-ways">The same twelve-step workflow, priced three ways</a></li><li class="lvl2"><a href="#what-the-retry-window-actually-buys">What the retry window actually buys</a></li><li class="lvl2"><a href="#retry-only-what-is-safe-to-run-twice">Retry only what is safe to run twice</a></li><li class="lvl2"><a href="#rate-limits-are-a-scheduling-problem">Rate limits are a scheduling problem</a></li><li class="lvl2"><a href="#guardrails-that-make-a-workflow-safe-to-leave-on">Guardrails that make a workflow safe to leave on</a></li><li class="lvl2"><a href="#deleting-a-workflow-is-a-cost-decision">Deleting a workflow is a cost decision</a></li><li class="lvl2"><a href="#three-numbers-before-the-first-node">Three numbers before the first node</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored"><strong>Podcast & Faceless YouTube Audio Production Kit</strong><em>$12</em></a></li><li><a href="https://lozzy36.gumroad.com/l/product-commercial-3d-studio" rel="noopener sponsored"><strong>AI Product Commercial & 3D Asset Prompt Studio</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored"><strong>AI Automation Blueprint Pack</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No comment section, no newsletter pop-up — advertising and cookies are explained in the privacy policy.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/services/">Hire the studio</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <a href="/omong-studio-journal/privacy/">Privacy</a> · <a href="/omong-studio-journal/contact/">Contact</a> · <a href="/omong-studio-journal/rss.xml">RSS</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>
