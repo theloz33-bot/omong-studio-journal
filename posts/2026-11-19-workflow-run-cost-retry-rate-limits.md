@@ -42,7 +42,7 @@ The first two land within a few cents. The third is roughly ten times that, not 
 
 **Fan-out flips the arithmetic.** A run processing 300 rows is one execution on n8n and 300 module iterations on Make, where the cheap option becomes the expensive one. Price at the item count you expect.
 
-The table hides a cliff: on Make, 10,000 credits is $16 and 20,000 is $28, so 12,000 costs 75% more for 20% more volume. Add 30% headroom and price the tier above.
+The table hides a cliff: on Make, 10,000 credits is $16 and 20,000 is $28, so a 12,000-credit month costs 75% more than 10,000. Add 30% headroom and price the tier above.
 
 ## What the retry window actually buys
 
