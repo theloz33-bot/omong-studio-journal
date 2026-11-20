@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What a 15-Second Ad Costs to Make Alone: Hours, a Rate Floor and a Quote That Holds</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/15-second-ad-cost-quote-sheet/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/15-second-ad-cost-quote-sheet/</guid>
+    <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Product</category>
+    <description>Two quotes for the same 15-second vertical ad can differ by ten times and both be honest. What separates them is whether the person quoting knows where the hours go — so here are the hours, the rate floor they imply, and the six lines a quote needs before it leaves your desk.</description>
+  </item>
   <item>
     <title>What One Workflow Run Really Costs: Run-Cost Math, Retry Budgets and Rate-Limit Guardrails in n8n, Make and Zapier</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/workflow-run-cost-retry-rate-limits/</link>
