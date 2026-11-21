@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Matching Colour Across AI Shots: Measure Four Numbers, Grade in Two Passes, Then Apply the Look</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-shot-color-match-look/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/ai-shot-color-match-look/</guid>
+    <pubDate>Sat, 21 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Short-Form Production</category>
+    <description>Six AI clips cut together can look like footage from six cameras. The fix is not a better LUT — it is measuring four numbers per clip and grading in the right order, so one look survives a whole series.</description>
+  </item>
   <item>
     <title>What a 15-Second Ad Costs to Make Alone: Hours, a Rate Floor and a Quote That Holds</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/15-second-ad-cost-quote-sheet/</link>
