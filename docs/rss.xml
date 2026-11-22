@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Sat, 21 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Product Page for a Digital Download: Eight Sections, Eighteen Objections and the Test Maths</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/product-page-sections-objections-test-maths/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/product-page-sections-objections-test-maths/</guid>
+    <pubDate>Sun, 22 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Product</category>
+    <description>A listing with views and no sales is usually answering the wrong question, in the wrong order. Eight sections in the order a buyer asks them, the objections that block a $19 download, and the sample size a test needs before it can tell you anything.</description>
+  </item>
   <item>
     <title>Matching Colour Across AI Shots: Measure Four Numbers, Grade in Two Passes, Then Apply the Look</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-shot-color-match-look/</link>
