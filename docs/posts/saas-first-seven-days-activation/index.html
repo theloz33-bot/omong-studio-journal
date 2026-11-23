@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview · Omong Studio</title>
+<meta name="description" content="How to design the first seven days of a SaaS product: choosing the one activation event, the funnel arithmetic, median time to value, a 100-point health score, churn interview questions and the test sample size.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/saas-first-seven-days-activation/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview · Omong Studio">
+<meta property="og:description" content="How to design the first seven days of a SaaS product: choosing the one activation event, the funnel arithmetic, median time to value, a 100-point health score, churn interview questions and the test sample size.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/saas-first-seven-days-activation/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview · Omong Studio">
+<meta name="twitter:description" content="How to design the first seven days of a SaaS product: choosing the one activation event, the funnel arithmetic, median time to value, a 100-point health score, churn interview questions and the test sample size.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+
+<meta property="article:published_time" content="2026-11-23">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview", "description": "How to design the first seven days of a SaaS product: choosing the one activation event, the funnel arithmetic, median time to value, a 100-point health score, churn interview questions and the test sample size.", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/saas-first-seven-days-activation/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Product", "keywords": "activation, onboarding, SaaS, retention, churn, cohort analysis", "wordCount": 1296}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/services/">Hire</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+<a href="/omong-studio-journal/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/product/">Product</a></nav>
+  <header class="post-head">
+    <h1>Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview</h1>
+    <p class="dek">Sign-ups arrive every day and the product is empty by week three. The fix is not a longer tour: it is one activation event, a median time to value, four emails with one action each — and the maths that says how many paying customers that is worth.</p>
+    <p class="meta"><time datetime="2026-11-23">November 23, 2026</time> · 6 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#activation-is-an-event-not-a-sign-up">Activation is an event, not a sign-up</a><a href="#the-funnel-maths-before-the-redesign">The funnel maths before the redesign</a><a href="#time-to-value-measured-in-hours">Time to value, measured in hours</a><a href="#four-emails-one-action-each">Four emails, one action each</a><a href="#a-health-score-whose-weights-add-to-100">A health score whose weights add to 100</a><a href="#retention-compounds-so-week-one-outweighs-week-twelve">Retention compounds, so week one outweighs week twelve</a><a href="#the-churn-interview-five-questions-no-pitching">The churn interview: five questions, no pitching</a><a href="#testing-activation-changes-without-a-big-sample">Testing activation changes without a big sample</a><a href="#checklist-before-the-seventh-day">Checklist before the seventh day</a></div></details>
+  <div class="prose">
+    <p class="lede">A small product can collect sign-ups every day and still be empty by the third week. Nothing broke: people arrived, looked, and left before the product did the one thing they came for. The first seven days are where that is decided, and the number that decides it is not sign-ups but how many people did the thing the product exists to do, and how quickly.</p>
+<p>Everything else in an onboarding — the tour, the checklist, the emails — either moves that number or spends the new user's patience.</p>
+<h2 id="activation-is-an-event-not-a-sign-up">Activation is an event, not a sign-up</h2>
+<p>Activation is the earliest action that separates the people still there in a month from the people who are not. It is a claim to check against a past cohort: split last quarter's sign-ups by whether they did X within seven days, then compare day-30 retention.</p>
+<div class="table-wrap"><table><thead><tr><th>Candidate event</th><th>What it actually measures</th><th>Verdict</th></tr></thead><tbody><tr><td>Account created</td><td>Intent, and nothing else</td><td>Every product already counts it</td></tr><tr><td>Profile completed</td><td>Willingness to fill a form</td><td>Effort, not value</td></tr><tr><td>Data imported</td><td>That the product now holds their work</td><td>Strong, when import is the job</td></tr><tr><td>First invoice sent</td><td>That money is already flowing through it</td><td>The strongest kind: an outcome</td></tr><tr><td>Invited a teammate</td><td>Virality</td><td>Often a proxy for a real first use</td></tr></tbody></table></div>
+<p>If the two groups retain the same, the event is a step, not activation. Keep one event, countable in the analytics you already have, reachable in a single session — a user who cannot finish the first task today will not come back tomorrow to finish it.</p>
+<h2 id="the-funnel-maths-before-the-redesign">The funnel maths before the redesign</h2>
+<p>Take 1,000 monthly sign-ups. Suppose activated users go on to pay at 25% and unactivated ones at 2% — plug in your own two rates, the arithmetic is the point.</p>
+<div class="table-wrap"><table><thead><tr><th>Activation rate</th><th>Activated</th><th>Paying from activated</th><th>Paying from the rest</th><th>Paying total</th></tr></thead><tbody><tr><td>10%</td><td>100</td><td>25</td><td>18</td><td>43</td></tr><tr><td>15%</td><td>150</td><td>37.5</td><td>17</td><td>54.5</td></tr><tr><td>20%</td><td>200</td><td>50</td><td>16</td><td>66</td></tr><tr><td>30%</td><td>300</td><td>75</td><td>14</td><td>89</td></tr></tbody></table></div>
+<p>Read the first row before the last. At 10% activation, 18 of 43 paying customers — 42% — come from sign-ups who never activated: the price page is doing the onboarding. Moving 20% to 30% takes paying customers from 66 to 89 with no change to pricing, traffic or ad spend.</p>
+<h2 id="time-to-value-measured-in-hours">Time to value, measured in hours</h2>
+<p>Log the timestamp of sign-up and of the activation event, then report the <strong>median</strong>. The mean is dragged upward by a few accounts that activated on day 40 for reasons of their own, and you spend a month chasing an average nobody experiences.</p>
+<div class="table-wrap"><table><thead><tr><th>Median time to value</th><th>What the first session has to do</th></tr></thead><tbody><tr><td>Under 10 minutes</td><td>Remove steps until the first task is the only thing on the screen</td></tr><tr><td>10 minutes to 1 hour</td><td>One guided task with a visible finish line — a progress bar with three named steps</td></tr><tr><td>1 to 24 hours</td><td>Supply the reason to return: their data, their file, a job that runs overnight</td></tr><tr><td>Longer than a day</td><td>Sell the setup as a service, or do the first project for them</td></tr></tbody></table></div>
+<h2 id="four-emails-one-action-each">Four emails, one action each</h2>
+<p>A sequence is not a newsletter. Each message asks for exactly one thing, links once, and the whole sequence stops the moment activation fires.</p>
+<ul><li><strong>Day 0 — the action.</strong> Subject line is the task, not the product: "Send your first invoice". Body is three lines and one button.</li><li><strong>Day 1 — the result.</strong> A screenshot of what their screen should look like now. People do not need encouragement; they need to know whether it worked.</li><li><strong>Day 3 — the blocker.</strong> The one step where most accounts stop, answered before they hit it.</li><li><strong>Day 7 — the question.</strong> "What were you trying to get done when you stopped?" Replies go straight into the churn interviews below.</li></ul>
+<p>A tour that explains every feature on day one competes with the task. One 40-second recording, voiced once with a saved <a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener" class="inline-tool">ElevenLabs</a> voice, can be re-cut when the copy changes without booking anyone — and the tour is the first thing to go stale.</p>
+<h2 id="a-health-score-whose-weights-add-to-100">A health score whose weights add to 100</h2>
+<p>A health score is only useful if each band triggers a different action. Weights are a judgement call; write them down so months compare.</p>
+<div class="table-wrap"><table><thead><tr><th>Factor</th><th>Weight</th><th>How it is measured</th></tr></thead><tbody><tr><td>Activated within 7 days</td><td>30</td><td>Activation event inside the window</td></tr><tr><td>Used on 3 separate days in the first 14</td><td>20</td><td>Distinct active days, not sessions</td></tr><tr><td>Core action repeated in week 2</td><td>20</td><td>A second invoice, a second export</td></tr><tr><td>More than one user or object created</td><td>10</td><td>Seats, projects, files</td></tr><tr><td>Integration or import connected</td><td>10</td><td>Data of theirs now in the product</td></tr></tbody></table></div>
+<p>Bands and the one action each band gets:</p>
+<div class="table-wrap"><table><thead><tr><th>Score</th><th>Band</th><th>Action</th></tr></thead><tbody><tr><td>70–100</td><td>Healthy</td><td>Nothing automated; ask for a testimonial</td></tr><tr><td>40–69</td><td>Watch</td><td>One personal email naming the unfinished step</td></tr><tr><td>Under 40</td><td>At risk</td><td>A human offer — a call, a setup, a pause on billing</td></tr></tbody></table></div>
+<p>A score of 55 is a watch account: activated, but never repeated the core action in week 2. The email that follows names that one gap, not features.</p>
+<h2 id="retention-compounds-so-week-one-outweighs-week-twelve">Retention compounds, so week one outweighs week twelve</h2>
+<p>Weekly retention multiplies. A cohort that keeps 60% of itself each week is 0.22% of its original size at week 12; at 75% it is 3.2% — fourteen times larger from a fifteen-point difference in a single week.</p>
+<div class="table-wrap"><table><thead><tr><th>Weekly retention</th><th>Week 4</th><th>Week 8</th><th>Week 12</th></tr></thead><tbody><tr><td>60%</td><td>13.0%</td><td>1.68%</td><td>0.22%</td></tr><tr><td>65%</td><td>17.9%</td><td>3.19%</td><td>0.57%</td></tr><tr><td>70%</td><td>24.0%</td><td>5.76%</td><td>1.38%</td></tr><tr><td>75%</td><td>31.6%</td><td>10.0%</td><td>3.17%</td></tr><tr><td>80%</td><td>41.0%</td><td>16.8%</td><td>6.87%</td></tr></tbody></table></div>
+<p>The same arithmetic runs on churn: 5% a month leaves 54% of a cohort after a year, 3% leaves 69%.</p>
+<h2 id="the-churn-interview-five-questions-no-pitching">The churn interview: five questions, no pitching</h2>
+<p>Split every cancellation by whether the account ever activated. A never-activated account has an onboarding problem; an activated account that left has a product or price problem. Mixing them produces advice that fixes neither.</p>
+<ul><li>What were you trying to get done the week you stopped?</li><li>What did you use instead?</li><li>Where did it stop making sense — the screen, or the idea?</li><li>What would have had to be true for you to keep paying?</li><li>Who else did you ask before deciding?</li></ul>
+<p>Do not ask "why did you cancel": the polite answer — "budget", "we're not ready" — is what people say to end a conversation. Do not offer a discount either, or you learn what they think of the price instead of the product. Ten interviews, coded into three reasons, name the gap no dashboard shows.</p>
+<h2 id="testing-activation-changes-without-a-big-sample">Testing activation changes without a big sample</h2>
+<p>Activation tests are two-proportion tests. At 95% confidence and 80% power, users per arm:</p>
+<blockquote><p>n ≈ 7.84 × (p₁(1−p₁) + p₂(1−p₂)) ÷ (p₂ − p₁)²</p></blockquote>
+<div class="table-wrap"><table><thead><tr><th>Baseline</th><th>Target</th><th>Users per arm</th></tr></thead><tbody><tr><td>15%</td><td>20%</td><td>902</td></tr><tr><td>20%</td><td>24%</td><td>1,678</td></tr><tr><td>20%</td><td>25%</td><td>1,090</td></tr><tr><td>25%</td><td>30%</td><td>1,247</td></tr><tr><td>30%</td><td>35%</td><td>1,372</td></tr></tbody></table></div>
+<p>A 20% relative lift needs 1,678 users per side; a 25% lift needs 1,090. Small differences are expensive to prove. With 200 activations a month, no onboarding test reports anything inside a quarter — ship the first-session fixes that are obviously right and track median time to value weekly.</p>
+<h2 id="checklist-before-the-seventh-day">Checklist before the seventh day</h2>
+<ul class="checklist"><li class="todo">One activation event, defined in the analytics tool, not in a document</li><li class="todo">A past cohort split by activation, with day-30 retention compared</li><li class="todo">Median time to value measured and visible to the team</li><li class="todo">Four emails, one action each, stopping on activation</li><li class="todo">Health score with fixed weights and one action per band</li><li class="todo">Cancellations separated by activation before the interview</li><li class="todo">First-session screen reviewed once on a phone, as a new user</li></ul>
+<p>For $19, the <a href="https://lozzy36.gumroad.com/l/saas-onboarding-retention-os" rel="noopener sponsored">SaaS Onboarding &amp; Retention OS</a> carries the 36 activation levers, the twelve formulas, 24 churn reasons with interview scripts, eight onboarding emails and the eight-factor health model used here, as Markdown, JSON and one offline HTML page.</p>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for spoken-word audio</span>
+  <span class="kit-name">Podcast & Faceless YouTube Audio Production Kit</span>
+  <span class="kit-desc">A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.</span>
+  <span class="kit-foot"><span class="kit-price">$12</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/product-commercial-3d-studio" rel="noopener sponsored">
+  <span class="kit-badge">Best for product spots</span>
+  <span class="kit-name">AI Product Commercial & 3D Asset Prompt Studio</span>
+  <span class="kit-desc">A 30-second shot-list builder and 35 lighting and PBR prompts for product commercials, so the footage and the bed arrive on the same beat.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored">
+  <span class="kit-badge">Best for n8n, Make & Zapier</span>
+  <span class="kit-name">AI Automation Blueprint Pack</span>
+  <span class="kit-desc">32 buildable workflows with the guardrails, failure modes and run-cost math that say whether a workflow should exist at all.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="hire-strip hire-post">
+  <div class="hire-copy">
+    <p class="hire-eyebrow">Work with the studio</p>
+    <h2>Want this made for your brand instead of by you?</h2>
+    <p>Omong Studio takes commissions for long-form storytelling, 9:16 short-form ads and original brand songs. Pilots from $95, 2–3 business days, and a fixed quote in writing before any work starts.</p>
+  </div>
+  <a class="hire-cta" href="/omong-studio-journal/services/">See what a commission includes &rarr;</a>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/product-page-sections-objections-test-maths/">A Product Page for a Digital Download: Eight Sections, Eighteen Objections and the Test Maths</a><span>Product · 6 min</span></li><li><a href="/omong-studio-journal/posts/ai-shot-color-match-look/">Matching Colour Across AI Shots: Measure Four Numbers, Grade in Two Passes, Then Apply the Look</a><span>Short-Form Production · 6 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#activation-is-an-event-not-a-sign-up">Activation is an event, not a sign-up</a></li><li class="lvl2"><a href="#the-funnel-maths-before-the-redesign">The funnel maths before the redesign</a></li><li class="lvl2"><a href="#time-to-value-measured-in-hours">Time to value, measured in hours</a></li><li class="lvl2"><a href="#four-emails-one-action-each">Four emails, one action each</a></li><li class="lvl2"><a href="#a-health-score-whose-weights-add-to-100">A health score whose weights add to 100</a></li><li class="lvl2"><a href="#retention-compounds-so-week-one-outweighs-week-twelve">Retention compounds, so week one outweighs week twelve</a></li><li class="lvl2"><a href="#the-churn-interview-five-questions-no-pitching">The churn interview: five questions, no pitching</a></li><li class="lvl2"><a href="#testing-activation-changes-without-a-big-sample">Testing activation changes without a big sample</a></li><li class="lvl2"><a href="#checklist-before-the-seventh-day">Checklist before the seventh day</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored"><strong>Podcast & Faceless YouTube Audio Production Kit</strong><em>$12</em></a></li><li><a href="https://lozzy36.gumroad.com/l/product-commercial-3d-studio" rel="noopener sponsored"><strong>AI Product Commercial & 3D Asset Prompt Studio</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored"><strong>AI Automation Blueprint Pack</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No comment section, no newsletter pop-up — advertising and cookies are explained in the privacy policy.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/services/">Hire the studio</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <a href="/omong-studio-journal/privacy/">Privacy</a> · <a href="/omong-studio-journal/contact/">Contact</a> · <a href="/omong-studio-journal/rss.xml">RSS</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>

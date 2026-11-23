@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 23 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/saas-first-seven-days-activation/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/saas-first-seven-days-activation/</guid>
+    <pubDate>Mon, 23 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Product</category>
+    <description>Sign-ups arrive every day and the product is empty by week three. The fix is not a longer tour: it is one activation event, a median time to value, four emails with one action each — and the maths that says how many paying customers that is worth.</description>
+  </item>
   <item>
     <title>A Product Page for a Digital Download: Eight Sections, Eighteen Objections and the Test Maths</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/product-page-sections-objections-test-maths/</link>
