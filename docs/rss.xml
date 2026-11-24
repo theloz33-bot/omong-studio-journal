@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Mon, 23 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>One Vertical Ad, Two Languages: Localising Captions and Voiceover Without Re-Cutting the Picture</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/localise-vertical-ad-captions-voiceover/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/localise-vertical-ad-captions-voiceover/</guid>
+    <pubDate>Tue, 24 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Short-Form Production</category>
+    <description>A client approves the Korean cut and then asks for English. The picture should not move. A per-line sheet, a reading-speed budget for each language and a delivery package built around a silent master keep it that way.</description>
+  </item>
   <item>
     <title>Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/saas-first-seven-days-activation/</link>
