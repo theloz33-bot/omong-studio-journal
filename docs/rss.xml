@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 24 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-generation-log-regenerate-shots/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/ai-generation-log-regenerate-shots/</guid>
+    <pubDate>Wed, 25 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Short-Form Production</category>
+    <description>A client asks for the same shot with a different product colour, and nobody knows which prompt, model or reference made it. A one-row-per-take generation log and a file name that points back to it turn that from a guessing game into a ten-minute job.</description>
+  </item>
   <item>
     <title>One Vertical Ad, Two Languages: Localising Captions and Voiceover Without Re-Cutting the Picture</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/localise-vertical-ad-captions-voiceover/</link>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record · Omong Studio</title>
+<meta name="description" content="How to log AI image and video generations so any shot can be found and redone later: a naming rule, the columns that matter, reference folders, voice settings and an archive routine.">
+<link rel="canonical" href="https://theloz33-bot.github.io/omong-studio-journal/posts/ai-generation-log-regenerate-shots/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Omong Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record · Omong Studio">
+<meta property="og:description" content="How to log AI image and video generations so any shot can be found and redone later: a naming rule, the columns that matter, reference folders, voice settings and an archive routine.">
+<meta property="og:url" content="https://theloz33-bot.github.io/omong-studio-journal/posts/ai-generation-log-regenerate-shots/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record · Omong Studio">
+<meta name="twitter:description" content="How to log AI image and video generations so any shot can be found and redone later: a naming rule, the columns that matter, reference folders, voice settings and an archive routine.">
+<meta name="theme-color" content="#12100e">
+<link rel="icon" href="/omong-studio-journal/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Omong Studio" href="/omong-studio-journal/rss.xml">
+<link rel="stylesheet" href="/omong-studio-journal/assets/style.css">
+
+<meta property="article:published_time" content="2026-11-25">
+<meta name="author" content="Omong Studio">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record", "description": "How to log AI image and video generations so any shot can be found and redone later: a naming rule, the columns that matter, reference folders, voice settings and an archive routine.", "datePublished": "2026-11-25", "dateModified": "2026-11-25", "inLanguage": "en", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://theloz33-bot.github.io/omong-studio-journal/posts/ai-generation-log-regenerate-shots/"}, "author": {"@type": "Organization", "name": "Omong Studio", "url": "https://theloz33-bot.github.io/omong-studio-journal/"}, "publisher": {"@type": "Organization", "name": "Omong Studio"}, "articleSection": "Short-Form Production", "keywords": "prompt log, file naming, AI video, asset management, reproducibility, workflow", "wordCount": 1266}</script>
+</head>
+<body class="layout-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/omong-studio-journal/" aria-label="Omong Studio — home">
+      <span class="brand-mark" aria-hidden="true">◎</span>
+      <span class="brand-text"><span>Omong Studio</span><em>Field notes on AI short-form, music videos and tiny tools</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/omong-studio-journal/" aria-current="page">Journal</a>
+<a href="/omong-studio-journal/services/">Hire</a>
+<a href="/omong-studio-journal/about/">About</a>
+<a href="/omong-studio-journal/disclosure/">Disclosure</a>
+<a href="/omong-studio-journal/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs"><a href="/omong-studio-journal/">Journal</a> / <a href="/omong-studio-journal/category/short-form-production/">Short-Form Production</a></nav>
+  <header class="post-head">
+    <h1>Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record</h1>
+    <p class="dek">A client asks for the same shot with a different product colour, and nobody knows which prompt, model or reference made it. A one-row-per-take generation log and a file name that points back to it turn that from a guessing game into a ten-minute job.</p>
+    <p class="meta"><time datetime="2026-11-25">November 25, 2026</time> · 6 min read · Omong Studio</p>
+  </header>
+  <details class="jump" open><summary>In this guide</summary><div class="jump-links"><a href="#what-the-same-shot-actually-depends-on">What "the same shot" actually depends on</a><a href="#a-naming-rule-that-points-back-to-the-log">A naming rule that points back to the log</a><a href="#the-generation-log">The generation log</a><a href="#keep-references-as-files-not-links">Keep references as files, not links</a><a href="#voice-and-audio-belong-in-the-same-log">Voice and audio belong in the same log</a><a href="#the-end-of-job-archive-routine">The end-of-job archive routine</a><a href="#regenerating-step-by-step">Regenerating, step by step</a><a href="#starting-points">Starting points</a><a href="#checklist-before-closing-a-job">Checklist before closing a job</a></div></details>
+  <div class="prose">
+    <p class="lede">The ad shipped in spring. In autumn the client comes back: same shot, same character, but the jacket is now green. You open the project folder and find <code>final_v3_REAL.mp4</code>, <code>final_v3_REAL2.mp4</code> and forty clips named by the generator's random string. The prompt is somewhere in a browser history that no longer exists. The reference image was a screenshot on a phone.</p>
+<p>The shot was not hard to make. It is hard to make <em>again</em>, because nothing connected the file to the decisions behind it. This post is the small system that fixes that: a naming rule, a generation log with one row per take, and a short archive routine at the end of each job.</p>
+<h2 id="what-the-same-shot-actually-depends-on">What "the same shot" actually depends on</h2>
+<p>A generated shot is the output of more inputs than the prompt. If any of these is missing, you are not regenerating; you are starting over with a hint.</p>
+<div class="table-wrap"><table><thead><tr><th>Input</th><th>Why it matters later</th></tr></thead><tbody><tr><td>Tool and model name, with version if shown</td><td>Hosted models are updated; the same prompt on a newer version can look different</td></tr><tr><td>Full prompt and negative prompt</td><td>Paraphrased prompts drift; copy the exact text</td></tr><tr><td>Reference images</td><td>Character sheets, product shots and style frames often carry more of the look than the words do</td></tr><tr><td>Settings</td><td>Aspect ratio, duration, resolution, motion strength, guidance, anything the interface exposed</td></tr><tr><td>Seed, if the tool shows one</td><td>Fixes one source of randomness; it does not guarantee an identical result</td></tr><tr><td>The take you kept, and why</td><td>Out of eight takes, the reason you picked take five is the brief for the next round</td></tr></tbody></table></div>
+<p>Be honest about the seed. On many tools the same seed, prompt and settings land close to the earlier result, but a model update, a different queue or a changed default can still move it. The log is not a promise of pixel-perfect repeats. It is the shortest path back to a shot that matches.</p>
+<h2 id="a-naming-rule-that-points-back-to-the-log">A naming rule that points back to the log</h2>
+<p>The file name has one job: let you find the log row in one search. Everything else lives in the log.</p>
+<pre><code>2026-11-25_P014_S03_T05_char-walk.mp4</code></pre>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody><tr><td><code>2026-11-25</code></td><td>Generation date, year first, so files sort in time order</td></tr><tr><td><code>P014</code></td><td>Project number</td></tr><tr><td><code>S03</code></td><td>Shot number from the storyboard</td></tr><tr><td><code>T05</code></td><td>Take number for that shot</td></tr><tr><td><code>char-walk</code></td><td>Two or three words a human can read</td></tr></tbody></table></div>
+<p>Rules that keep it working:</p>
+<ul><li><strong>Year-month-day, always.</strong> <code>25-11-26</code> and <code>11/25</code> sort wrongly and mean different things in different countries.</li><li><strong>Zero-padded numbers.</strong> <code>S03</code> sorts before <code>S10</code>; <code>S3</code> does not.</li><li><strong>No spaces, no "final".</strong> A file called final is never the last one.</li><li><strong>Rename on download.</strong> The generator's random string goes into the log as a column, not into your folder.</li></ul>
+<h2 id="the-generation-log">The generation log</h2>
+<p>One row per take, including the takes you rejected. A spreadsheet is enough; a CSV next to the project is better, because it travels with the folder.</p>
+<div class="table-wrap"><table><thead><tr><th>Column</th><th>Example</th></tr></thead><tbody><tr><td><code>file</code></td><td><code>2026-11-25_P014_S03_T05_char-walk.mp4</code></td></tr><tr><td><code>tool</code> / <code>model</code></td><td>Video generator name, model label as shown in the interface</td></tr><tr><td><code>mode</code></td><td>text-to-video / image-to-video / edit</td></tr><tr><td><code>prompt</code></td><td>Exact text, pasted</td></tr><tr><td><code>negative</code></td><td>Exact text, or blank</td></tr><tr><td><code>refs</code></td><td><code>refs/char_front.png; refs/jacket_red.png</code></td></tr><tr><td><code>settings</code></td><td><code>9:16, 5 s, 1080p, motion 0.6</code></td></tr><tr><td><code>seed</code></td><td>Number, or <code>n/a</code></td></tr><tr><td><code>source_id</code></td><td>The generator's own job or file ID, if it has one</td></tr><tr><td><code>status</code></td><td>keep / reject / alt</td></tr><tr><td><code>note</code></td><td>"hands fine, background warps at 3 s"</td></tr></tbody></table></div>
+<p>Two habits make the log useful instead of decorative.</p>
+<p>First, <strong>write the row at generation time, not afterwards.</strong> Reconstructing prompts at the end of a job means copying the last version of each prompt, which is rarely the one that produced the kept take.</p>
+<p>Second, <strong>log rejections with a reason.</strong> "Face drifts after 2 s" on four rejected takes tells you that the problem is the reference, not the wording. That note saves more credits on the next job than any prompt trick.</p>
+<h2 id="keep-references-as-files-not-links">Keep references as files, not links</h2>
+<p>References are the part most often lost. A link to a chat, a gallery page or a shared drive folder may not open in six months; a file in the project does.</p>
+<pre><code>P014_client-jacket/
+  refs/
+    char_front.png
+    char_side.png
+    jacket_red.png
+    style_frame_01.png
+  gen/
+  edit/
+  delivery/
+  log.csv</code></pre>
+<p>Name reference files by role, not by source. <code>char_front.png</code> will still make sense next year; <code>IMG_4471.png</code> will not. When a character sheet changes, save a new file (<code>char_front_v2.png</code>) and log which takes used which version. A series that switches sheets mid-season without a record is where consistency quietly breaks.</p>
+<h2 id="voice-and-audio-belong-in-the-same-log">Voice and audio belong in the same log</h2>
+<p>Short-form ads usually carry a voice line, and voiceover drifts for the same reasons pictures do. Log the voice name, the model, the stability and similarity settings, and the exact line text, one row per exported line. With <a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener" class="inline-tool">ElevenLabs</a> a saved voice keeps the narrator consistent across jobs, but the settings you used on the day still need writing down, because a changed slider changes the read.</p>
+<p>For music beds, log the generator, the prompt and the version you mixed, and keep the stems in the project rather than only the bounce. A pickup edit with the bed at a new length is quick with stems and slow without them.</p>
+<h2 id="the-end-of-job-archive-routine">The end-of-job archive routine</h2>
+<p>Fifteen minutes when a job is delivered, before the folder is forgotten:</p>
+<ol><li>Delete nothing yet. Mark every take in the log as keep, reject or alt.</li><li>Move rejected clips into <code>gen/_rejected/</code>. Keep them until the client has signed off; then decide by storage cost, not by mood.</li><li>Check that every <code>keep</code> row has its prompt, references and settings filled in.</li><li>Export the log as CSV into the project root, even if you also keep a spreadsheet online.</li><li>Copy the whole project folder to a second drive or storage location.</li><li>Write one line in a studio-wide index: project number, client label, date, what was made.</li></ol>
+<p>The index line is what lets you find <code>P014</code> when the client writes "the jacket ad from spring" and nothing more.</p>
+<h2 id="regenerating-step-by-step">Regenerating, step by step</h2>
+<p>When the request comes back:</p>
+<ol><li>Find the project in the index, then the shot in <code>log.csv</code>.</li><li>Open the kept take and its reference files side by side.</li><li>Check whether the tool still offers the same model. If not, note the new model in a new row; expect a match, not a copy.</li><li>Change one thing only: the jacket reference, or the one line of prompt that mentions colour.</li><li>Generate a small batch, log every take, and compare against the old keep on the same screen.</li></ol>
+<p>If the old keep and the new take sit in the same cut, colour-match them before delivery rather than hoping the generator did it.</p>
+<h2 id="starting-points">Starting points</h2>
+<p>The <a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">AI Short-Form Character &amp; Motion Transfer Kit</a> includes three-view character prompts and an episode storyboard sheet that map directly onto the <code>S</code> and <code>refs</code> columns above. For music-video work, the <a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">Cinematic AI MV &amp; Suno v6 Prompt Vault</a> organises prompts by shot type, which makes a prompt column easier to fill with text you can reuse.</p>
+<h2 id="checklist-before-closing-a-job">Checklist before closing a job</h2>
+<ul class="checklist"><li class="todo">Every delivered shot has a log row marked keep</li><li class="todo">Prompts are pasted, not paraphrased</li><li class="todo">Reference images saved as files inside the project</li><li class="todo">Model name and settings recorded for each keep</li><li class="todo">Voice settings and line text logged per exported line</li><li class="todo">Log exported as CSV into the project root</li><li class="todo">Project copied to a second location</li><li class="todo">One line added to the studio index</li></ul>
+<p>A generation log costs a minute per take. It is the difference between telling a client "we can do that this afternoon" and quoting the shot again from scratch.</p>
+  </div>
+  <section class="callout tool-box"><h2>Toolbox for this workflow</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some links in this box are affiliate links. If you subscribe through one, Omong Studio may earn a commission at no extra cost to you. These are tools used in the workflow above; nothing here is paid placement.</p></section>
+  <section class="kit-block">
+  <h2 class="rule">Kits from the studio</h2>
+  <p class="kit-note">Independent kits from the studio: prompt packs and templates that pair with the workflows in these posts.</p>
+  <div class="kit-grid">
+    <a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored">
+  <span class="kit-badge">Best for music videos</span>
+  <span class="kit-name">Cinematic AI MV & Suno v6 Prompt Vault</span>
+  <span class="kit-desc">60+ prompts for cinematic music-video shots, organised by shot type and section of a song.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for 9:16 series</span>
+  <span class="kit-name">AI Short-Form Character & Motion Transfer Kit</span>
+  <span class="kit-desc">30 three-view character prompts, a Seedance/Ludyte pipeline map and a storyboard tool for episodic shorts.</span>
+  <span class="kit-foot"><span class="kit-price">$17</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for spoken-word audio</span>
+  <span class="kit-name">Podcast & Faceless YouTube Audio Production Kit</span>
+  <span class="kit-desc">A single-file loudness planner and chain builder, 40 bed and voice prompts, and a 13-chapter speech mastering playbook.</span>
+  <span class="kit-foot"><span class="kit-price">$12</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/product-commercial-3d-studio" rel="noopener sponsored">
+  <span class="kit-badge">Best for product spots</span>
+  <span class="kit-name">AI Product Commercial & 3D Asset Prompt Studio</span>
+  <span class="kit-desc">A 30-second shot-list builder and 35 lighting and PBR prompts for product commercials, so the footage and the bed arrive on the same beat.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored">
+  <span class="kit-badge">Best for n8n, Make & Zapier</span>
+  <span class="kit-name">AI Automation Blueprint Pack</span>
+  <span class="kit-desc">32 buildable workflows with the guardrails, failure modes and run-cost math that say whether a workflow should exist at all.</span>
+  <span class="kit-foot"><span class="kit-price">$19</span><span class="kit-go">View kit &rarr;</span></span>
+</a><a class="kit-card" href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored">
+  <span class="kit-badge">Best for micro-tools</span>
+  <span class="kit-name">Vibe Coding Launch Kit</span>
+  <span class="kit-desc">5 single-file HTML templates plus 30 Claude and Cursor prompts for shipping a small tool in an afternoon.</span>
+  <span class="kit-foot"><span class="kit-price">$15</span><span class="kit-go">View kit &rarr;</span></span>
+</a>
+  </div>
+</section>
+  <section class="hire-strip hire-post">
+  <div class="hire-copy">
+    <p class="hire-eyebrow">Work with the studio</p>
+    <h2>Want this made for your brand instead of by you?</h2>
+    <p>Omong Studio takes commissions for long-form storytelling, 9:16 short-form ads and original brand songs. Pilots from $95, 2–3 business days, and a fixed quote in writing before any work starts.</p>
+  </div>
+  <a class="hire-cta" href="/omong-studio-journal/services/">See what a commission includes &rarr;</a>
+</section>
+  <section class="related"><h2 class="rule">Keep reading</h2><ul><li><a href="/omong-studio-journal/posts/localise-vertical-ad-captions-voiceover/">One Vertical Ad, Two Languages: Localising Captions and Voiceover Without Re-Cutting the Picture</a><span>Short-Form Production · 6 min</span></li><li><a href="/omong-studio-journal/posts/saas-first-seven-days-activation/">Activation in Seven Days: The One Event, the Funnel Maths and the Churn Interview</a><span>Product · 6 min</span></li></ul></section>
+  <p class="post-foot"><a href="/omong-studio-journal/">All posts</a></p>
+</article>
+<aside class="post-aside" aria-label="Sidebar"><nav class="side-box toc-box"><h2>In this article</h2><ul class="toc"><li class="lvl2"><a href="#what-the-same-shot-actually-depends-on">What "the same shot" actually depends on</a></li><li class="lvl2"><a href="#a-naming-rule-that-points-back-to-the-log">A naming rule that points back to the log</a></li><li class="lvl2"><a href="#the-generation-log">The generation log</a></li><li class="lvl2"><a href="#keep-references-as-files-not-links">Keep references as files, not links</a></li><li class="lvl2"><a href="#voice-and-audio-belong-in-the-same-log">Voice and audio belong in the same log</a></li><li class="lvl2"><a href="#the-end-of-job-archive-routine">The end-of-job archive routine</a></li><li class="lvl2"><a href="#regenerating-step-by-step">Regenerating, step by step</a></li><li class="lvl2"><a href="#starting-points">Starting points</a></li><li class="lvl2"><a href="#checklist-before-closing-a-job">Checklist before closing a job</a></li></ul></nav>
+<div class="side-box"><h2>Toolbox</h2><ul class="tools"><li><a href="https://try.elevenlabs.io/j3vxlnhpi2d3" rel="nofollow sponsored noopener">ElevenLabs</a><span>Text-to-speech with saved voices, so a narrator sounds the same in episode 9 as in episode 1. Export a WAV per line and you get timings you can cut against.</span></li></ul><p class="disclosure-mini">Some outbound links are affiliate links (no extra cost to you).</p></div>
+<div class="side-box"><h2>Studio kits</h2><ul class="mini-kits"><li><a href="https://lozzy36.gumroad.com/l/ai-mv-suno-prompt-vault" rel="noopener sponsored"><strong>Cinematic AI MV & Suno v6 Prompt Vault</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/ai-shortform-character-kit" rel="noopener sponsored"><strong>AI Short-Form Character & Motion Transfer Kit</strong><em>$17</em></a></li><li><a href="https://lozzy36.gumroad.com/l/podcast-faceless-audio-kit" rel="noopener sponsored"><strong>Podcast & Faceless YouTube Audio Production Kit</strong><em>$12</em></a></li><li><a href="https://lozzy36.gumroad.com/l/product-commercial-3d-studio" rel="noopener sponsored"><strong>AI Product Commercial & 3D Asset Prompt Studio</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/automation-blueprint-pack" rel="noopener sponsored"><strong>AI Automation Blueprint Pack</strong><em>$19</em></a></li><li><a href="https://lozzy36.gumroad.com/l/vibe-coding-launch-kit" rel="noopener sponsored"><strong>Vibe Coding Launch Kit</strong><em>$15</em></a></li></ul></div></aside>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Omong Studio</p>
+    <p>Written and published by Omong Studio. No comment section, no newsletter pop-up — advertising and cookies are explained in the privacy policy.</p>
+    <p class="footer-links"><a href="/omong-studio-journal/services/">Hire the studio</a> · <a href="/omong-studio-journal/about/">About</a> · <a href="/omong-studio-journal/disclosure/">Disclosure</a> · <a href="/omong-studio-journal/privacy/">Privacy</a> · <a href="/omong-studio-journal/contact/">Contact</a> · <a href="/omong-studio-journal/rss.xml">RSS</a> · <span>&copy; 2026 Omong Studio</span></p>
+  </div>
+</footer>
+</body>
+</html>
