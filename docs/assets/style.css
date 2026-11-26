@@ -116,6 +116,24 @@ ul.entries { list-style: none; padding: 0; margin: 0; }
 .post-head { border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
 .post-head .dek { font-size: 1.15rem; }
 
+.tldr {
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+  padding: 1rem 1.15rem;
+  margin: 1.15rem 0 0;
+  max-width: var(--measure);
+}
+.tldr-label {
+  margin: 0 0 .4rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.tldr p:last-child { margin: 0; font-size: 1.02rem; line-height: 1.6; color: var(--ink); }
+
+
 details.jump {
   border: 1px solid var(--line); background: var(--paper-alt);
   padding: .9rem 1.1rem; margin-bottom: 2rem;

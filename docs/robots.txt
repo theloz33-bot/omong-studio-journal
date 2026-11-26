@@ -1,4 +1,23 @@
+# Public pages may be crawled and cited by search engines and AI assistants.
 User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://theloz33-bot.github.io/omong-studio-journal/sitemap.xml

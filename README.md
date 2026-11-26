@@ -40,11 +40,17 @@ date: "2026-11-16"
 category: "Character Consistency" # its own /category/<slug>/ page
 excerpt: "One or two sentences shown on cards and in the feed."
 description: "Meta description, 140-160 characters."
+summary: "Optional one-line TL;DR. If omitted, excerpt is used. Do not invent figures."
+updated: "2026-11-17"             # optional; only when the article was actually revised
 tags: ["AI character", "9:16"]
 tools: ["elevenlabs", "gamma"]    # keys from data/affiliates.json -> toolbox box
 featured: true                    # the newest featured post runs as the home hero
 ---
 ```
+
+The build injects a TL;DR box at the top of every post from `summary`, or from `excerpt` when `summary` is absent. Existing posts are not rewritten. If a section heading is a question (ends with `?`), or sits under a heading named FAQ / Q&A, the following paragraph is also emitted as FAQPage JSON-LD. Do not add made-up questions or numbers just to fill that schema.
+
+`docs/llms.txt` and a crawler-explicit `docs/robots.txt` are generated on every build for AI-search citation (ChatGPT, Perplexity, Google AI Overviews and similar). Author and publisher in JSON-LD are the studio brand only.
 
 ## Writing rules used on this site
 
@@ -53,6 +59,8 @@ featured: true                    # the newest featured post runs as the home he
 - Failures stay in the article; they are the useful part.
 - Affiliate links carry `rel="nofollow sponsored"` and are disclosed in `data/affiliates.json` and on `/disclosure/`.
 - No analytics, no cookies, no third-party scripts. Keep it that way.
+- Write `excerpt` so it can stand alone as a cited takeaway. Add `summary` only when the takeaway should be slightly longer than the card text.
+- Question-form `##` headings are optional; use them only for questions the article already answers.
 
 ## Checks before pushing
 

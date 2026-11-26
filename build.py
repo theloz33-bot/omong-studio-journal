@@ -15,7 +15,7 @@ Inputs
     static/               copied into docs/ as-is
 
 Output
-    docs/                 index, posts, categories, sitemap.xml, rss.xml, robots.txt, 404.html
+    docs/                 index, posts, categories, sitemap.xml, rss.xml, robots.txt, llms.txt, 404.html
 """
 
 from __future__ import annotations
@@ -323,6 +323,145 @@ def word_count(text: str) -> int:
     return len([w for w in text.split() if re.search(r"[A-Za-z0-9]", w)])
 
 
+
+AI_CRAWLERS = (
+    "GPTBot",
+    "OAI-SearchBot",
+    "ChatGPT-User",
+    "PerplexityBot",
+    "ClaudeBot",
+    "Google-Extended",
+)
+
+FAQ_SECTION_TITLES = {
+    "faq",
+    "faqs",
+    "q&a",
+    "q and a",
+    "frequently asked questions",
+}
+
+
+def strip_md(text: str) -> str:
+    """Plain text from a short markdown fragment. Used only for summaries and FAQ answers already in the source."""
+    text = re.sub(r"\[\[(?:tool|cp|kmong|cpa):[^\]|]+\|([^\]]+)\]\]", r"\1", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    text = re.sub(r"[*`_]+", "", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def extract_faq(body: str) -> list[dict]:
+    """Collect Q&A pairs from existing headings. Never invents questions or answers."""
+    blocks: list[dict] = []
+    current = None
+    for line in body.replace("\r\n", "\n").split("\n"):
+        match = re.match(r"^(#{2,3})\s+(.+?)\s*$", line)
+        if match:
+            if current:
+                blocks.append(current)
+            current = {"level": len(match.group(1)), "title": match.group(2).strip(), "lines": []}
+        elif current is not None:
+            current["lines"].append(line)
+    if current:
+        blocks.append(current)
+
+    def first_answer(block: dict) -> str:
+        raw = "\n".join(block["lines"]).strip()
+        if not raw:
+            return ""
+        for para in re.split(r"\n\s*\n", raw):
+            chunk = para.strip()
+            if not chunk or chunk in ("---", "***") or chunk.startswith(":::"):
+                continue
+            return strip_md(chunk)
+        return ""
+
+    pairs: list[dict] = []
+    in_faq = False
+    faq_level = None
+    for block in blocks:
+        title = strip_md(block["title"])
+        title_key = re.sub(r"[:：]\s*$", "", title).strip().lower()
+        if title_key in FAQ_SECTION_TITLES:
+            in_faq = True
+            faq_level = block["level"]
+            continue
+        if in_faq and faq_level is not None and block["level"] <= faq_level:
+            in_faq = False
+            faq_level = None
+        is_question = title.endswith("?") or title.endswith("？")
+        if not title or not (is_question or in_faq):
+            continue
+        answer = first_answer(block)
+        if len(answer) >= 8:
+            pairs.append({"question": title, "answer": answer})
+    return pairs
+
+
+def tldr_html(text: str, label: str = "TL;DR") -> str:
+    return (
+        f'<aside class="tldr" aria-label="{html.escape(label, quote=True)}">'
+        f'<p class="tldr-label">{html.escape(label)}</p>'
+        f"<p>{escape(text)}</p>"
+        f"</aside>"
+    )
+
+
+def robots_txt(sitemap_url: str) -> str:
+    lines = [
+        "# Public pages may be crawled and cited by search engines and AI assistants.",
+        "User-agent: *",
+        "Allow: /",
+        "",
+    ]
+    for bot in AI_CRAWLERS:
+        lines.extend([f"User-agent: {bot}", "Allow: /", ""])
+    lines.append(f"Sitemap: {sitemap_url}")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def llms_txt(site: dict, posts: list[dict]) -> str:
+    home = site["base_url"].rstrip("/") + "/"
+    brand = site["brand"]
+    lines = [
+        f"# {brand}",
+        "",
+        f"> {site['description']}",
+        "",
+        f"{site.get('about_blurb', '')} Published by {brand}. Please cite the source URL when quoting. This site is published under the studio brand only and does not list personal names, emails or locations.",
+        "",
+        "## Posts",
+        "",
+    ]
+    for post in posts:
+        lines.append(f"- [{post['title']}]({post['url']}): {post['excerpt']}")
+    lines += [
+        "",
+        "## Pages",
+        "",
+        f"- [Hire the studio]({home}services/)",
+        f"- [About]({home}about/)",
+        f"- [Disclosure]({home}disclosure/)",
+        f"- [Privacy]({home}privacy/)",
+        f"- [Contact]({home}contact/)",
+        "",
+        "## Index",
+        "",
+        f"- [Sitemap]({home}sitemap.xml)",
+        f"- [RSS]({home}rss.xml)",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def organization_ld(site: dict) -> dict:
+    home = site["base_url"].rstrip("/") + "/"
+    return {"@type": "Organization", "name": site["brand"], "url": home}
+
+
+
 # ---------------------------------------------------------------- building blocks
 
 
@@ -349,11 +488,14 @@ def load_posts(site: dict, affiliates: dict) -> list[dict]:
                 "category_slug": slugify(meta["category"]),
                 "description": meta["description"],
                 "excerpt": meta.get("excerpt", meta["description"]),
+                "summary": (meta.get("summary") or "").strip() or meta.get("excerpt", meta["description"]),
+                "updated": (meta.get("updated") or meta["date"]).strip(),
                 "tags": meta.get("tags", []),
                 "tools": meta.get("tools", []),
                 "featured": str(meta.get("featured", "")).lower() in ("true", "yes", "1"),
                 "html": body_html,
                 "toc": toc,
+                "faq": extract_faq(body),
                 "words": words,
                 "reading": reading,
             }
@@ -586,7 +728,7 @@ def build() -> int:
   <nav class="crumbs"><a href="{base}">Journal</a> / <a href="{base}category/{post['category_slug']}/">{escape(post['category'])}</a></nav>
   <header class="post-head">
     <h1>{escape(post['title'])}</h1>
-    <p class="dek">{escape(post['excerpt'])}</p>
+    {tldr_html(post["summary"])}
     <p class="meta"><time datetime="{post['date']}">{fmt_date(post['date'])}</time> · {post['reading']} min read · {brand}</p>
   </header>
   {toc_html}
@@ -600,25 +742,47 @@ def build() -> int:
   <p class="post-foot"><a href="{base}">All posts</a></p>
 </article>"""
 
+        org = organization_ld(site)
         jsonld = {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": post["title"],
             "description": post["description"],
             "datePublished": post["date"],
-            "dateModified": post["date"],
+            "dateModified": post["updated"],
             "inLanguage": "en",
             "mainEntityOfPage": {"@type": "WebPage", "@id": url},
-            "author": {"@type": "Organization", "name": brand, "url": site["base_url"].rstrip('/') + "/"},
-            "publisher": {"@type": "Organization", "name": brand},
+            "author": org,
+            "publisher": org,
             "articleSection": post["category"],
             "keywords": ", ".join(post["tags"]),
             "wordCount": post["words"],
         }
+        ld_scripts = [jsonld]
+        if post["faq"]:
+            ld_scripts.append(
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": item["question"],
+                            "acceptedAnswer": {"@type": "Answer", "text": item["answer"]},
+                        }
+                        for item in post["faq"]
+                    ],
+                }
+            )
+        ld_html = "\n".join(
+            f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>'
+            for block in ld_scripts
+        )
         head_extra = (
             f'<meta property="article:published_time" content="{post["date"]}">\n'
+            f'<meta property="article:modified_time" content="{post["updated"]}">\n'
             f'<meta name="author" content="{brand}">\n'
-            f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>'
+            + ld_html
         )
 
         aside = sidebar_html(products, site, affiliates, post["tools"], post["toc"])
@@ -748,21 +912,41 @@ def build() -> int:
 {product_cards(products, site, "Kits and prompt packs")}
 {hire_strip(site)}"""
 
-    blog_ld = {
+    home_url = site["base_url"].rstrip("/") + "/"
+    org = organization_ld(site)
+    org["@id"] = home_url + "#organization"
+    home_ld = {
         "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": brand,
-        "description": site["description"],
-        "url": site["base_url"].rstrip("/") + "/",
-        "inLanguage": "en",
-        "blogPost": [
+        "@graph": [
+            org,
             {
-                "@type": "BlogPosting",
-                "headline": p["title"],
-                "datePublished": p["date"],
-                "url": p["url"],
-            }
-            for p in posts
+                "@type": "WebSite",
+                "@id": home_url + "#website",
+                "name": brand,
+                "description": site["description"],
+                "url": home_url,
+                "inLanguage": "en",
+                "publisher": {"@id": org["@id"]},
+            },
+            {
+                "@type": "Blog",
+                "@id": home_url + "#blog",
+                "name": brand,
+                "description": site["description"],
+                "url": home_url,
+                "inLanguage": "en",
+                "publisher": {"@id": org["@id"]},
+                "blogPost": [
+                    {
+                        "@type": "BlogPosting",
+                        "headline": p["title"],
+                        "datePublished": p["date"],
+                        "dateModified": p["updated"],
+                        "url": p["url"],
+                    }
+                    for p in posts
+                ],
+            },
         ],
     }
     write(
@@ -770,10 +954,10 @@ def build() -> int:
         page(
             title=f"{brand} — {site['tagline']}",
             description=site["description"],
-            canonical=site["base_url"].rstrip("/") + "/",
+            canonical=home_url,
             content=index_content,
             current="journal",
-            head_extra=f'<script type="application/ld+json">{json.dumps(blog_ld, ensure_ascii=False)}</script>',
+            head_extra=f'<script type="application/ld+json">{json.dumps(home_ld, ensure_ascii=False)}</script>',
             body_class="layout-home",
         ),
     )
@@ -807,7 +991,7 @@ def build() -> int:
 
     urls = [
         ("", posts[0]["date"] if posts else datetime.now().strftime("%Y-%m-%d")),
-        *[(f"posts/{p['slug']}/", p["date"]) for p in posts],
+        *[(f"posts/{p['slug']}/", p["updated"]) for p in posts],
         *[(f"category/{slugify(name)}/", max(i["date"] for i in items_)) for name, items_ in categories.items()],
         *[(f"{spec['path'].strip('/')}/", posts[0]["date"] if posts else datetime.now().strftime("%Y-%m-%d")) for spec in site["pages"] if spec["path"].strip("/")],
     ]
@@ -823,10 +1007,9 @@ def build() -> int:
 """,
     )
 
-    write(
-        "robots.txt",
-        f"User-agent: *\nAllow: /\n\nSitemap: {site['base_url'].rstrip('/')}/sitemap.xml\n",
-    )
+    sitemap_url = site["base_url"].rstrip("/") + "/sitemap.xml"
+    write("robots.txt", robots_txt(sitemap_url))
+    write("llms.txt", llms_txt(site, posts))
 
     write(
         "404.html",

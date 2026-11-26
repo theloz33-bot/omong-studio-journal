@@ -172,7 +172,7 @@ def main() -> int:
             if re.search(pattern, page.read_text(encoding="utf-8"), re.I):
                 failures.append(f"{page.relative_to(DOCS)}: cookie claim contradicts advertising")
 
-    for required in ("privacy/index.html", "contact/index.html"):
+    for required in ("privacy/index.html", "contact/index.html", "robots.txt", "sitemap.xml", "llms.txt"):
         if not (DOCS / required).exists():
             failures.append(f"missing required page: {required}")
 
