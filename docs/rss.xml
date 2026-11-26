@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 25 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 26 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Two Revision Rounds, Not Ten: Scoping Client Feedback on AI Video Jobs</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-revision-rounds-feedback/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-revision-rounds-feedback/</guid>
+    <pubDate>Thu, 26 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Short-Form Production</category>
+    <description>On an AI video job, every vague note costs a fresh batch of generations. A written revision scope, a timecoded feedback sheet and a clear line between a fix and a change keep a fifteen-second ad from turning into a month of rounds.</description>
+  </item>
   <item>
     <title>Regenerating an AI Shot Six Months Later: A Generation Log, a Naming Rule and What to Record</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-generation-log-regenerate-shots/</link>
