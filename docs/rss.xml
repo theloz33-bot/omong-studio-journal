@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Thu, 26 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 27 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>One Folder per Job: Project Structure, Backups and a Handover Archive for AI Video Work</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-project-folder-backup-archive/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-project-folder-backup-archive/</guid>
+    <pubDate>Fri, 27 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Short-Form Production</category>
+    <description>AI video jobs scatter files across generation sites, download folders and editors. One fixed folder per job, a naming rule, a backup routine with an off-site copy and a closing archive keep every shot, voice line and delivery findable long after the invoice is paid.</description>
+  </item>
   <item>
     <title>Two Revision Rounds, Not Ten: Scoping Client Feedback on AI Video Jobs</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-revision-rounds-feedback/</link>
