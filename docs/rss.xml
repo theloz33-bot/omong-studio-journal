@@ -6,7 +6,15 @@
   <atom:link href="https://theloz33-bot.github.io/omong-studio-journal/rss.xml" rel="self" type="application/rss+xml"/>
   <description>A working journal from Omong Studio: how AI short-form episodes get made, how music videos are timed to the beat, and how one-file apps get shipped. Real pipelines, no hype.</description>
   <language>en</language>
-  <lastBuildDate>Fri, 27 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 28 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>The Brief Before the First Generation: A One-Page Intake for AI Video Jobs</title>
+    <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-client-brief-intake/</link>
+    <guid isPermaLink="true">https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-client-brief-intake/</guid>
+    <pubDate>Sat, 28 Nov 2026 09:00:00 +0000</pubDate>
+    <category>Short-Form Production</category>
+    <description>Most wasted generations on an AI video job trace back to a question nobody asked before the first prompt. A one-page intake covering purpose, platform and format, must-show items, voice and music, references and approvals turns a loose request into something you can quote, prompt and deliver.</description>
+  </item>
   <item>
     <title>One Folder per Job: Project Structure, Backups and a Handover Archive for AI Video Work</title>
     <link>https://theloz33-bot.github.io/omong-studio-journal/posts/ai-video-project-folder-backup-archive/</link>
